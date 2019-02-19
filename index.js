@@ -76,7 +76,7 @@ app.post('/webhook', function (req, res, next) {
               ]
             }]
           }]
-        }, { headers });
+        }, { headers }).catch(error => console.log(error));
       }
     } else if (event.type === 'postback') {
       axios.post(url, {
