@@ -4,11 +4,13 @@ const url = 'https://api.line.me/v2/bot/message/reply';
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const firebase = require('firebase-admin');
+
 const app = express();
 
 app.use(bodyParser.json());
 
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(`Node.js is listening to PORT: ${server.address().port}`);
 });
 
@@ -77,6 +79,19 @@ app.post('/webhook', function (req, res, next) {
             }
           }]
         }, { headers }).catch(error => console.log(error));
+      } else if (event.message.text === 'テスト2') {
+        console.log({
+          type: process.env.type,
+          project_id: process.env.project_id,
+          project_key_id: process.env.project_key_id,
+          private_key: process.env.private_key,
+          client_email: process.env.client_email,
+          client_id: process.env.client_id,
+          auth_url: process.env.auth_url,
+          token_url: process.env.token_url,
+          auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
+          client_x509_cert_url: process.env.client_x509_cert_url
+        });
       }
     } else if (event.type === 'postback') {
       axios.post(url, {
