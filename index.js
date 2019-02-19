@@ -113,9 +113,15 @@ app.post('/webhook', function (req, res, next) {
   }
 });
 
-function reply(body) {
-  axios.post('https://api.line.me/v2/bot/message/reply', body, {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${process.env.channel_access_token}`
-  });
+async function reply(body) {
+  try {
+    await axios.post('https://api.line.me/v2/bot/message/reply', body, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.channel_access_token}`
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
 }
