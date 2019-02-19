@@ -114,7 +114,7 @@ app.post('/webhook', function (req, res, next) {
 });
 
 function reply(body) {
-  axios.post('https://api.line.me/v2/bot/message/reply', body, {
+  return axios.post('https://api.line.me/v2/bot/message/reply', body, {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${process.env.channel_access_token}`
   });
