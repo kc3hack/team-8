@@ -98,8 +98,8 @@ app.post('/webhook', function (req, res, next) {
         }, { headers }).catch(error => console.log(error));
       } else if (event.message.text === 'テスト2') {
         (async () => {
-          const querySnapshot = await db.collection('pages').get();
-          for (let doc of snapshot) {
+          const { docs } = await db.collection('pages').get();
+          for (let doc of docs) {
             console.log(`Document ID: ${doc.id}`);
             console.log(doc.data());
           }
