@@ -40,7 +40,41 @@ app.post('/webhook', function (req, res, next) {
           messages: [{
             type: 'template',
             altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-            template: []
+            template: {
+              type: 'carousel',
+              columns: [
+                {
+                  thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550587379/p_002.jpg',
+                  title: '白咲 花',
+                  text: 'しろさき はな',
+                  actions: [{
+                    type: 'postback',
+                    label: 'かわいい',
+                    data: 'hana'
+                  }]
+                },
+                {
+                  thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550587383/p_003.jpg',
+                  title: '星野 ひなた',
+                  text: 'ほしの ひなた',
+                  actions: [{
+                    type: 'postback',
+                    label: 'かわいい',
+                    data: 'hinata'
+                  }]
+                },
+                {
+                  thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550587388/p_004.jpg',
+                  title: '姫坂 乃愛',
+                  text: 'ひめさか のあ',
+                  actions: [{
+                    type: 'postback',
+                    label: 'かわいい',
+                    data: 'noa'
+                  }]
+                }
+              ]
+            }
           }]
         }, { headers }).catch(error => console.log(error));
       }
