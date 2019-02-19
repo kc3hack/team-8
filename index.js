@@ -4,7 +4,24 @@ const url = 'https://api.line.me/v2/bot/message/reply';
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const firebase = require('firebase-admin');
+const admin = require('firebase-admin');
+
+admin.initializeApp({
+  credential: admin.credential.cert({
+    type: process.env.type,
+    project_id: process.env.project_id,
+    project_key_id: process.env.project_key_id,
+    private_key: process.env.private_key,
+    client_email: process.env.client_email,
+    client_id: process.env.client_id,
+    auth_url: process.env.auth_url,
+    token_url: process.env.token_url,
+    auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
+    client_x509_cert_url: process.env.client_x509_cert_url
+  })
+});
+
+const db = admin.firestore();
 
 const app = express();
 
@@ -80,18 +97,13 @@ app.post('/webhook', function (req, res, next) {
           }]
         }, { headers }).catch(error => console.log(error));
       } else if (event.message.text === 'テスト2') {
-        console.log({
-          type: process.env.type,
-          project_id: process.env.project_id,
-          project_key_id: process.env.project_key_id,
-          private_key: process.env.private_key,
-          client_email: process.env.client_email,
-          client_id: process.env.client_id,
-          auth_url: process.env.auth_url,
-          token_url: process.env.token_url,
-          auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
-          client_x509_cert_url: process.env.client_x509_cert_url
-        });
+        (async () => {
+          const querySnapshot = await db.collection('pages').get();
+          for (let doc of snapshot) {
+            console.log(`Document ID: ${doc.id}`);
+            console.log(doc.data());
+          }
+        })().catch(next);
       }
     } else if (event.type === 'postback') {
       axios.post(url, {
