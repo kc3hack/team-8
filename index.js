@@ -38,16 +38,14 @@ app.post('/webhook', function (req, res, next) {
   for (let event of req.body.events) {
     if (event.type === 'message') {
       if (event.message.text === 'ハロー') {
-        reply({
-          replyToken: event.replyToken,
+        reply(event, {
           messages: [{
             type: 'text',
             text: 'こんにちは'
           }]
         });
       } else if (event.message.text === 'テスト') {
-        reply({
-          replyToken: event.replyToken,
+        reply(event, {
           messages: [{
             type: 'template',
             altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
@@ -98,8 +96,7 @@ app.post('/webhook', function (req, res, next) {
         })().catch(next);
       }
     } else if (event.type === 'postback') {
-      reply({
-        replyToken: event.replyToken,
+      reply(event, {
         messages: [{
           type: 'text',
           text: event.postback.data === 'hana'
@@ -113,9 +110,12 @@ app.post('/webhook', function (req, res, next) {
   }
 });
 
-async function reply(body) {
+async function reply(event, body) {
   try {
-    await axios.post('https://api.line.me/v2/bot/message/reply', body, {
+    await axios.post('https://api.line.me/v2/bot/message/reply', {
+      replyToken: event.replyToken,
+      ...body
+    }, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.channel_access_token}`
