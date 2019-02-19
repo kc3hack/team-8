@@ -87,7 +87,7 @@ app.post('/webhook', function (req, res, next) {
               ]
             }
           }]
-        }).catch(error => console.log(error));
+        });
       } else if (event.message.text === 'テスト2') {
         (async () => {
           const { docs } = await db.collection('pages').get();
@@ -114,7 +114,7 @@ app.post('/webhook', function (req, res, next) {
 });
 
 function reply(body) {
-  return axios.post('https://api.line.me/v2/bot/message/reply', body, {
+  axios.post('https://api.line.me/v2/bot/message/reply', body, {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${process.env.channel_access_token}`
   });
