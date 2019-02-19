@@ -12,9 +12,10 @@ app.get('/', (req, res, next) => {
   res.json('Hello World!');
 });
 
-app.post('/webhook', (req, res, next) => {
+app.post('/webhook', function (req, res, next) {
   res.status(200).end();
 
+  console.log(req);
   for (let event of req.body.events) {
     if (event.type === 'message' && event.message.text === 'ハロー') {
       const headers = {
