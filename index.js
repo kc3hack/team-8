@@ -80,7 +80,7 @@ app.post('/webhook', function (req, res, next) {
       }
     } else if (event.type === 'postback') {
       axios.post(url, {
-        replyToken: event.body.replyToken,
+        replyToken: event.replyToken,
         messages: [{
           type: 'text',
           text: event.postback.data === 'hana'
