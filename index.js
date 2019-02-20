@@ -209,9 +209,8 @@ function category(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'food',
-             displayText: '飲食'
-           }]
+             data: 'food'
+            }]
           },
           {
             thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/d7/d7204f6c5a25a9bde5ae435b7c3b1ee9_w.jpg',
@@ -220,8 +219,7 @@ function category(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'spot',
-              displayText: 'スポット'
+              data: 'spot'
             }]
           }
         ]
@@ -254,8 +252,7 @@ function foodCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'sweet',
-              displayText: `${title}`
+              data: 'sweet'
             }]
           },
           {
