@@ -156,6 +156,6 @@ async function reply(event, body) {
       }
     });
   } catch (e) {
-    console.log(e);
+    console.log(e.details);
   }
 }
