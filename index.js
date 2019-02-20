@@ -5,7 +5,6 @@ const admin = require('firebase-admin');
 const paths = require('./paths.json');
 
 function seek(/*object*/ obj, /*string*/ tag) {
-  console.log({ obj, tag });
   // 自分 (obj) が tag で指定されているか確認
   if (obj.tag === tag) return obj;
 
@@ -68,7 +67,10 @@ app.post('/webhook', function (req, res, next) {
 
       for (let i = 0; i < paths.length; i ++) {
         const result = seek(paths[i], eventPostbackData);
-        if (result !== null) generateTemplate(event, result);
+        if (result !== null) {
+          generateTemplate(event, result);
+          return;
+        }
 
         if (i === paths.length - 1) {
           console.error('不正な postback です');
