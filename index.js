@@ -2,6 +2,25 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const admin = require('firebase-admin');
+const paths = require('./paths.json');
+
+function seek(/*object*/ obj, /*string*/ tag) {
+  console.log({ obj, tag });
+  // 自分 (obj) が tag で指定されているか確認
+  if (obj.tag === tag) return obj;
+
+  // 子要素のどれかが tag で指定されているか確認
+  if ('child' in obj) {
+    for (let i = 0; i < obj.child.length; i++) {
+      const result = seek(obj.child[i], tag);
+      if (result !== null) return result;
+    }
+    return null;
+  }
+
+  // ヒットしなかった
+  return null;
+}
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -23,15 +42,12 @@ const db = admin.firestore();
 const app = express();
 app.use(bodyParser.json());
 
-
 const server = app.listen(process.env.PORT, () => {
   console.log(`Node.js is listening to PORT: ${server.address().port}`);
 });
 
 app.get('/', (req, res, next) => {
   res.json('Hello World!');
-  // res.json('Hello World!');
-
 });
 
 app.post('/webhook', function (req, res, next) {
@@ -48,77 +64,49 @@ app.post('/webhook', function (req, res, next) {
     }
 
     if (event.type === 'postback') {
-
       const eventPostbackData = event.postback.data;
-      let text;
 
-      switch (eventPostbackData) {
-        case 'food':
-          text = foodCategory(event);
-          break;
-        case 'spot':
-          text = spotCategory(event);
-          break;
-        case 'flour':
-          text = 'たこ焼きです。';
-          break;
-        case 'sweet':
-          text = 'スイーツです。';
-          break;
-        case 'other':
-          text = otherFoodCategory(event);
-          break;
-        case 'sightseeing':
-          text = sightseeingCategory(event);
-          break;
-        case 'leisure':
-          text = leisureCategory(event);
-          break;
-        case 'shopping':
-          text = 'ショッピングです。'
-          break;
-        case 'history':
-          text = historyCategory(event);
-          break;
-        case 'walk':
-          text = walkCategory(event);
-          break;
-        case 'display':
-          text = displayCategory(event);
-          break;
-        case 'outdoor':
-          text = outdoorCategory(event);
-          break;
-        case 'amusement':
-          text = amusementCategory(event);
-          break;
-        case 'view':
-          text = viewCategory(event);
-          break;
-        case 'area':
-          text = areaCategory(event);
-          break;
-        case 'animal':
-          text = animalCategory(event);
-          break;
-        case 'mountain':
-          text = mountainCategory(event);
-          break;
-        default:
-          console.error(`不正な postback です: ${eventPostbackData}`);
+      for (let i = 0; i < paths.length; i ++) {
+        const result = seek(paths[i], eventPostbackData);
+        if (result !== null) generateTemplate(event, result);
+
+        if (i === paths.length - 1) {
+          console.error('不正な postback です');
           return;
+        }
       }
-
-      reply(event, {
-        messages: [{
-          type: 'text',
-          text
-        }]
-      });
     }
   }
 });
 
+function generateTemplate(event, obj) {
+  if ('child' in obj) {
+    // 質問する
+    reply(event, {
+      messages: [{
+        type: 'template',
+        template: {
+          type: 'carousel',
+          columns: obj.child.map(item => ({
+            thumbnailImageUrl: item.image,
+            title: item.title,
+            text: item.text,
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: item.tag
+            }]
+          }))
+        }
+      }]
+    });
+    return;
+  }
+
+  // 検索結果を発言する
+}
+
+/*
 function category(event) {
   reply(event, {
     messages: [{
@@ -773,6 +761,7 @@ function mountainCategory(event) {
     }]
   })
 }
+*/
 
 async function reply(event, body) {
   try {
