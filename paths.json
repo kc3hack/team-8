@@ -9,13 +9,13 @@
         "tag": "sweets",
         "title": "スイーツ",
         "text": "ケーキ、和菓子...etc",
-        "image": "http://gahag.net/img/201608/09s/gahag-011450.jpg"
+        "image": "https://res.cloudinary.com/tsundoku/image/upload/v1550701359/sweets.jpg"
       },
       {
         "tag": "lightFood",
         "title": "軽食",
         "text": "",
-        "image": "http://gahag.net/img/201510/25s/gahag-001846.jpg"
+        "image": "https://res.cloudinary.com/tsundoku/image/upload/v1550701408/lightFood.jpg"
       },
       {
         "tag": "flour",
@@ -79,7 +79,7 @@
             "tag": "noodles",
             "title": "麺類",
             "text": "",
-            "image": "",
+            "image": "https://publicdomainq.net/images/201810/07s/publicdomainq-0027082.jpg",
             "child": [
               {
                 "tag": "udon",
@@ -123,19 +123,19 @@
                     "tag": "chineseFood",
                     "title": "中華",
                     "text": "",
-                    "image": ""
+                    "image": "http://gahag.net/img/201510/09s/gahag-001247.jpg"
                   },
                   {
                     "tag": "indianFood",
                     "title": "インド",
                     "text": "",
-                    "image": ""
+                    "image": "https://publicdomainq.net/images/201806/24s/publicdomainq-0023455.jpg"
                   },
                   {
                     "tag": "thaiFood",
                     "title": "タイ・ベトナム",
                     "text": "",
-                    "image": ""
+                    "image": "https://publicdomainq.net/images/201807/24s/publicdomainq-0024490.jpg"
                   }
                 ]
               },
@@ -149,19 +149,19 @@
                     "tag": "french",
                     "title": "フレンチ",
                     "text": "",
-                    "image": ""
+                    "image": "https://publicdomainq.net/images/201805/15s/publicdomainq-0022077.jpg"
                   },
                   {
                     "tag": "italian",
                     "title": "イタリアン",
                     "text": "",
-                    "image": ""
+                    "image": "https://publicdomainq.net/images/201712/18s/publicdomainq-0016877.jpg"
                   },
                   {
                     "tag": "westernFood",
                     "title": "その他洋食",
                     "text": "",
-                    "image": ""
+                    "image": "https://publicdomainq.net/images/201807/24s/publicdomainq-0024509.jpg"
                   }
                 ]
               },
@@ -211,7 +211,7 @@
                 "tag": "ruins",
                 "title": "遺跡・史跡",
                 "text": "",
-                "image": ""
+                "image": "https://cdn.pixabay.com/photo/2015/12/16/03/45/korea-1095361_1280.jpg"
               },
               {
                 "tag": "otherHistory",
@@ -231,19 +231,19 @@
                 "tag": "scene",
                 "title": "景色",
                 "text": ">景観・絶景、展望台・施設",
-                "image": "",
+                "image": "http://gahag.net/img/201606/14s/gahag-009639.jpg",
                 "child": [
                   {
                     "tag": "superb",
                     "title": "景観・絶景",
                     "text": "",
-                    "image": ""
+                    "image": "https://cdn.pixabay.com/photo/2016/04/25/16/46/kitadake-1352353_1280.jpg"
                   },
                   {
                     "tag": "sightSeeingTower",
                     "title": "展望台・施設",
                     "text": "",
-                    "image": ""
+                    "image": "https://cdn.pixabay.com/photo/2017/07/13/08/02/white-2499611_1280.jpg"
                   }
                 ]
               },
@@ -257,19 +257,19 @@
                     "tag": "street",
                     "title": "街並み",
                     "text": "",
-                    "image": ""
+                    "image": "https://cdn.pixabay.com/photo/2018/09/09/12/51/japan-3664500_1280.jpg"
                   },
                   {
                     "tag": "building",
                     "title": "建築物",
                     "text": "",
-                    "image": ""
+                    "image": "https://cdn.pixabay.com/photo/2013/11/26/14/40/japan-218617_1280.jpg"
                   },
                   {
                     "tag": "otherSights",
                     "title": "その他",
                     "text": "",
-                    "image": ""
+                    "image": "https://cdn.pixabay.com/photo/2015/10/20/06/52/osaka-997318_1280.jpg"
                   }
                 ]
               }
@@ -279,7 +279,7 @@
             "tag": "hotSpring",
             "title": "お風呂・温泉",
             "text": "",
-            "image": ""
+            "image": "http://gahag.net/img/201604/04s/gahag-007259.jpg"
           }
         ]
       },
@@ -305,7 +305,7 @@
                     "tag": "zoo",
                     "title": "動物園",
                     "text": "",
-                    "image": ""
+                    "image": "https://www.photock.jp/photo/thum/photo0000-1280.jpg"
                   },
                   {
                     "tag": "aquarium",
