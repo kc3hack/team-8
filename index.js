@@ -87,6 +87,7 @@ function generateTemplate(event, obj) {
     const request = {
       messages: [{
         type: 'template',
+        altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
         template: {
           type: 'carousel',
           columns: obj.child.map(item => {
