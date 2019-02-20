@@ -81,6 +81,20 @@ app.post('/webhook', function (req, res, next) {
   }
 });
 
+/*console.log(JSON.stringify(paths[0].child.map(item => {
+  //console.log(item);
+  return {
+    thumbnailImageUrl: item.image,
+    title: item.title,
+    text: item.text,
+    actions: [{
+      type: 'postback',
+      label: '選択',
+      data: item.tag
+    }]
+  };
+})));*/
+
 function generateTemplate(event, obj) {
   if ('child' in obj) {
     // 質問する
@@ -90,16 +104,54 @@ function generateTemplate(event, obj) {
         altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
         template: {
           type: 'carousel',
-          columns: [
-            {
-              thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
-              title: '飲食',
-              text: '>粉物,スイーツ,その他',
-              actions: [{
-                type: 'postback',
-                label: '選択',
-                data: 'food'
-              }]
+          columns: [  
+            {  
+              "thumbnailImageUrl":"https://res.cloudinary.com/tsundoku/image/upload/v1550701359/sweets.jpg",
+              "title":"スイーツ",
+              "text":"ケーキ、和菓子...etc",
+              "actions":[  
+                {  
+                  "type":"postback",
+                  "label":"選択",
+                  "data":"sweets"
+                }
+              ]
+            },
+            {  
+              "thumbnailImageUrl":"https://res.cloudinary.com/tsundoku/image/upload/v1550701408/lightFood.jpg",
+              "title":"軽食",
+              "text":"",
+              "actions":[  
+                {  
+                  "type":"postback",
+                  "label":"選択",
+                  "data":"lightFood"
+                }
+              ]
+            },
+            {  
+              "thumbnailImageUrl":"https://d1f5hsy4d47upe.cloudfront.net/9d/9d70d762fd1e29e3dc3a84b0469969bf_t.jpeg",
+              "title":"粉物・鉄板",
+              "text":"お好み焼き、たこ焼き...etc",
+              "actions":[  
+                {  
+                  "type":"postback",
+                  "label":"選択",
+                  "data":"flour"
+                }
+              ]
+            },
+            {  
+              "thumbnailImageUrl":"https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png",
+              "title":"その他",
+              "text":">肉,魚,麺類,その他",
+              "actions":[  
+                {  
+                  "type":"postback",
+                  "label":"選択",
+                  "data":"otherFood"
+                }
+              ]
             }
           ]/*obj.child.map(item => {
             console.log(item);
