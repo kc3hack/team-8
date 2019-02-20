@@ -102,7 +102,8 @@ function generateTemplate(event, obj) {
         }
       }]
     };
-    console.log(request);
+    console.log(request.messages[0].columns);
+    console.log(request.messages[0].columns.actions);
     reply(event, request);
     return;
   }
@@ -156,6 +157,6 @@ async function reply(event, body) {
       }
     });
   } catch (e) {
-    console.log(e.details);
+    console.log(e);
   }
 }
