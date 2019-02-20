@@ -30,6 +30,8 @@ const server = app.listen(process.env.PORT, () => {
 
 app.get('/', (req, res, next) => {
   res.json('Hello World!');
+  // res.json('Hello World!');
+
 });
 
 app.post('/webhook', function (req, res, next) {
@@ -55,30 +57,60 @@ app.post('/webhook', function (req, res, next) {
     }
 
     if (event.type === 'postback') {
+
+      const eventPostbackData = event.Postback.Data;
+
       reply(event, {
         messages: [{
           type: 'text',
-          text: event.postback.data === 'food'
+          text: eventPostbackData === 'food'
               ? `好きな食べ物のカテゴリーを選んでください。${foodCategory(event)}`//変数が使えるか確認
-              : (event.postback.data === 'spot'
+              : (eventPostbackData === 'spot'
                 ? spotCategory(event)
-                : (event.postback.data === 'flour'
+                : (eventPostbackData === 'flour'
                   ? 'たこ焼きです。'
-                  : (event.postback.data === 'sweet'
-                    ? 'ケーキです。'
-                    : (event.postback.data === 'other'
-                      ? 'その他です。'
-                      : (event.postback.data === 'sightseeing'
-                        ? '観光です。'
-                        : (event.postback.data === 'leisure'
-                          ? 'レジャーです。'
-                          : 'ショッピングです。'
+                  : (eventPostbackData === 'sweet'
+                    ? 'スイーツです。'
+                    : (eventPostbackData === 'other'
+                      ? otherFoodCategory(event)
+                      : (eventPostbackData === 'sightseeing'
+                        ? sightseeingCategory(event)
+                        : (eventPostbackData === 'leisure'
+                          ? leisureCategory(event)
+                          : (eventPostbackData === 'shopping'
+                            ? 'ショッピングです。'
+                            : (eventPostbackData === 'history'
+                              ? historyCategory(event)
+                              : (eventPostbackData === 'walk'
+                                ? walkCategory(event)
+                                : (eventPostbackData === 'display'
+                                  ? displayCategory(event)
+                                  : (eventPostbackData === 'outdoor'
+                                    ? outdoorCategory(event)
+                                    : (eventPostbackData === 'amusement'
+                                      ? amusementCategory(event)
+                                      : (eventPostbackData === 'view'
+                                        ? viewCategory(event)
+                                        : (eventPostbackData === 'area'
+                                          ? areaCategory(event)
+                                          : (eventPostbackData === 'animal'
+                                            ? animalCategory(event)
+                                            : mountainCategory(event)
+                                              )
+                                            )
+                                          )
+                                        )
+                                      )
+                                    )
+                                  )
+                                )
+                              )
+                            )
                           )
                         )
                       )
                     )  
                   )
-                )
         }]
       });
     }
@@ -86,9 +118,9 @@ app.post('/webhook', function (req, res, next) {
     //   reply(event, {
     //     messages: [{
     //       type: 'text',
-    //       text: event.postback.data === 'hana'
+    //       text: eventPostbackData === 'hana'
     //           ? '花「ありがとうございます。」'
-    //           : (event.postback.data === 'hinata'
+    //           : (eventPostbackData === 'hinata'
     //               ? 'ひなた「やったぁー！」'
     //               : '乃愛「でっしょー？私が世界で一番かわいい！」')
     //     }]
@@ -210,9 +242,8 @@ function foodCategory(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'flour',
-             displayText: '粉物を選びました'
-           }]
+             data: 'flour'
+            }]
           },
           {
             thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/d7/d7204f6c5a25a9bde5ae435b7c3b1ee9_w.jpg',
@@ -222,7 +253,7 @@ function foodCategory(event) {
               type: 'postback',
               label: '選択',
               data: 'sweet',
-              displayText: 'スイーツを選びました'
+              displayText: `${title}`
             }]
           },
           {
@@ -287,7 +318,8 @@ function spotCategory(event) {
     }]
   })
 }
-function templateCategory(event) {
+
+function otherFoodCategory(event) {
   reply(event, {
     messages: [{
       type: 'template',
@@ -297,35 +329,24 @@ function templateCategory(event) {
         columns: [
           {
            thumbnailImageUrl: '',
-           title: '',
+           title: '和食',
            text: '',
            actions: [{
              type: 'postback',
              label: '選択',
              data: '',
-             displayText: ''
+             displayText: '和食を選択しました。'
            }]
           },
           {
             thumbnailImageUrl: '',
-            title: '',
+            title: '中華',
             text: '',
             actions: [{
               type: 'postback',
               label: '選択',
               data: '',
-              displayText: ''
-            }]
-          },
-          {
-            thumbnailImageUrl: '',
-            title: '',
-            text: '',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: '',
-              displayText: ''
+              displayText: '中華を選択しました。'
             }]
           }
         ]
@@ -333,6 +354,501 @@ function templateCategory(event) {
     }]
   })
 }
+
+function sightseeingCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V1.jpg',
+           title: '歴史・文化',
+           text: '>お城、神社・寺、遺跡・史跡、その他',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'history',
+             displayText: '歴史・文化を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '散策',
+            text: '>景色、名所',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'walk',
+              displayText: '散策を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'お風呂・温泉',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'bath',
+              displayText: 'お風呂・温泉を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function leisureCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '展示',
+           text: '>生物、博物館、美術館',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'display',
+             displayText: '展示を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'アウトドア・スポーツ',
+            text: '>山、海・川、施設',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'outdoor',
+              displayText: 'アウトドア・スポーツを選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'アミューズメントパーク',
+            text: '>テーマパーク・体験・文芸',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'amusement',
+              displayText: 'アミューズメントパークを選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function historyCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: 'お城',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'castle',
+             displayText: 'お城を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg',
+            title: '神社・寺',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'shrine',
+              displayText: '神社・寺を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '遺跡・史跡',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'remain',
+              displayText: '遺跡・史跡を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'その他',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'odaNobunaga',
+              displayText: 'その他を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function walkCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '景色',
+           text: '>景観・絶景、展望台・施設',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'view',
+             displayText: '景色を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '名所',
+            text: '>街並み、建築物、その他',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'area',
+              displayText: '名所を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function displayCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '生物',
+           text: '>動物園、水族館',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'animal',
+             displayText: '生物を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '博物館',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'museum',
+              displayText: '博物館を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '美術館',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'art',
+              displayText: '美術館を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function outdoorCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '山',
+           text: '>登山、キャンプ、スキー',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'moutain',
+             displayText: '山を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '海・川',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'water',
+              displayText: '海・川を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '施設',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'facility',
+              displayText: '施設を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function amusementCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: 'テーマパーク',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'theme',
+             displayText: 'テーマパークを選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '体験',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'eperience',
+              displayText: '体験を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '文芸',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'culture',
+              displayText: '文芸を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function viewCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '景観・絶景',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'gView',
+             displayText: '景観・絶景を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '展望台・施設',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'outlook',
+              displayText: '展望台・施設を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function areaCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '街並み',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'town',
+             displayText: '街並みを選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '建築物',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'constraction',
+              displayText: '建築物を選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'その他',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'anotherArea',
+              displayText: 'その他を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
+function animalCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '動物園',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'zoo',
+             displayText: '動物園を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '水族館',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'aqua',
+              displayText: '水族館を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+function mountainCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '登山',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'climbing',
+             displayText: '登山を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'キャンプ',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'camp',
+              displayText: 'キャンプを選択しました。'
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'スキー',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'ski',
+              displayText: 'スキーを選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
 async function reply(event, body) {
   try {
     await axios.post('https://api.line.me/v2/bot/message/reply', {
