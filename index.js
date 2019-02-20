@@ -81,6 +81,7 @@ app.post('/webhook', function (req, res, next) {
   }
 });
 
+/*
 console.log(JSON.stringify(paths[0].child.map(item => {
   //console.log(item);
   return {
@@ -94,6 +95,7 @@ console.log(JSON.stringify(paths[0].child.map(item => {
     }]
   };
 })));
+*/
 
 /*
 console.log(JSON.stringify([
