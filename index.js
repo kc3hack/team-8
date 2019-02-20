@@ -114,18 +114,6 @@ app.post('/webhook', function (req, res, next) {
         }]
       });
     }
-    // if (event.type === 'postback') {
-    //   reply(event, {
-    //     messages: [{
-    //       type: 'text',
-    //       text: eventPostbackData === 'hana'
-    //           ? '花「ありがとうございます。」'
-    //           : (eventPostbackData === 'hinata'
-    //               ? 'ひなた「やったぁー！」'
-    //               : '乃愛「でっしょー？私が世界で一番かわいい！」')
-    //     }]
-    //   });
-    // }
   }
 });
 
@@ -203,13 +191,13 @@ function category(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
-           title: '飲食',
-           text: '>粉物,スイーツ,その他',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'food'
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+            title: '飲食',
+            text: '>粉物,スイーツ,その他',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'food'
             }]
           },
           {
@@ -236,13 +224,13 @@ function foodCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/9d/9d70d762fd1e29e3dc3a84b0469969bf_t.jpeg',
-           title: '粉物',
-           text: 'お好み焼き、たこ焼き...etc',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'flour'
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/9d/9d70d762fd1e29e3dc3a84b0469969bf_t.jpeg',
+            title: '粉物',
+            text: 'お好み焼き、たこ焼き...etc',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'flour'
             }]
           },
           {
@@ -280,15 +268,15 @@ function spotCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '観光',
-           text: '>歴史・文化、散策、お風呂・温泉',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'sightseeing',
-             displayText: `観光`
-           }]
+            thumbnailImageUrl: '',
+            title: '観光',
+            text: '>歴史・文化、散策、お風呂・温泉',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sightseeing',
+              displayText: `観光`
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -327,15 +315,15 @@ function otherFoodCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '和食',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: '',
-             displayText: '和食を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '和食',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: '',
+              displayText: '和食を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -363,15 +351,15 @@ function sightseeingCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V1.jpg',
-           title: '歴史・文化',
-           text: '>お城、神社・寺、遺跡・史跡、その他',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'history',
-             displayText: '歴史・文化を選択しました。'
-           }]
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V1.jpg',
+            title: '歴史・文化',
+            text: '>お城、神社・寺、遺跡・史跡、その他',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'history',
+              displayText: '歴史・文化を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -410,15 +398,15 @@ function leisureCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '展示',
-           text: '>生物、博物館、美術館',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'display',
-             displayText: '展示を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '展示',
+            text: '>生物、博物館、美術館',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'display',
+              displayText: '展示を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -457,15 +445,15 @@ function historyCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: 'お城',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'castle',
-             displayText: 'お城を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: 'お城',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'castle',
+              displayText: 'お城を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg',
@@ -515,15 +503,15 @@ function walkCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '景色',
-           text: '>景観・絶景、展望台・施設',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'view',
-             displayText: '景色を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '景色',
+            text: '>景観・絶景、展望台・施設',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'view',
+              displayText: '景色を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -551,15 +539,15 @@ function displayCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '生物',
-           text: '>動物園、水族館',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'animal',
-             displayText: '生物を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '生物',
+            text: '>動物園、水族館',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'animal',
+              displayText: '生物を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -598,15 +586,15 @@ function outdoorCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '山',
-           text: '>登山、キャンプ、スキー',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'moutain',
-             displayText: '山を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '山',
+            text: '>登山、キャンプ、スキー',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'moutain',
+              displayText: '山を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -645,15 +633,15 @@ function amusementCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: 'テーマパーク',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'theme',
-             displayText: 'テーマパークを選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: 'テーマパーク',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'theme',
+              displayText: 'テーマパークを選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -692,15 +680,15 @@ function viewCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '景観・絶景',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'gView',
-             displayText: '景観・絶景を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '景観・絶景',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'gView',
+              displayText: '景観・絶景を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -728,15 +716,15 @@ function areaCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '街並み',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'town',
-             displayText: '街並みを選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '街並み',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'town',
+              displayText: '街並みを選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -775,15 +763,15 @@ function animalCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '動物園',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'zoo',
-             displayText: '動物園を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '動物園',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'zoo',
+              displayText: '動物園を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
@@ -810,15 +798,15 @@ function mountainCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '登山',
-           text: '',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'climbing',
-             displayText: '登山を選択しました。'
-           }]
+            thumbnailImageUrl: '',
+            title: '登山',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'climbing',
+              displayText: '登山を選択しました。'
+            }]
           },
           {
             thumbnailImageUrl: '',
