@@ -59,14 +59,24 @@ app.post('/webhook', function (req, res, next) {
         messages: [{
           type: 'text',
           text: event.postback.data === 'food'
-              ? foodCategory(event)
-              : (event.postback.data === 'sightseeing'
-                ? sightseeingCategory(event)
+              ? `好きな食べ物のカテゴリーを選んでください。${foodCategory(event)}`//変数が使えるか確認
+              : (event.postback.data === 'spot'
+                ? spotCategory(event)
                 : (event.postback.data === 'flour'
                   ? 'たこ焼きです。'
                   : (event.postback.data === 'sweet'
                     ? 'ケーキです。'
-                    : 'その他です。')
+                    : (event.postback.data === 'other'
+                      ? 'その他です。'
+                      : (event.postback.data === 'sightseeing'
+                        ? '観光です。'
+                        : (event.postback.data === 'leisure'
+                          ? 'レジャーです。'
+                          : 'ショッピングです。'
+                          )
+                        )
+                      )
+                    )  
                   )
                 )
         }]
@@ -177,7 +187,7 @@ function category(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'sightseeing'
+              data: 'spot'
             }]
           }
         ]
@@ -200,7 +210,8 @@ function foodCategory(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'flour'
+             data: 'flour',
+             displayText: '粉物を選びました'
            }]
           },
           {
@@ -210,7 +221,8 @@ function foodCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'sweet'
+              data: 'sweet',
+              displayText: 'スイーツを選びました'
             }]
           },
           {
@@ -229,6 +241,98 @@ function foodCategory(event) {
   })
 }
 
+function spotCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '観光',
+           text: '>歴史・文化、散策、お風呂・温泉',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'sightseeing',
+             displayText: `${title}を選択しました。`//displayTextや変数が使えるか試し
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'レジャー',
+            text: '>展示、アウトドア・スポーツ、アミューズメント',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'leisure',
+              displayText: ''
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: 'ショッピング',
+            text: '?',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'shopping',
+              displayText: ''
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+function templateCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: '',
+           title: '',
+           text: '',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: '',
+             displayText: ''
+           }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: '',
+              displayText: ''
+            }]
+          },
+          {
+            thumbnailImageUrl: '',
+            title: '',
+            text: '',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: '',
+              displayText: ''
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
 async function reply(event, body) {
   try {
     await axios.post('https://api.line.me/v2/bot/message/reply', {
