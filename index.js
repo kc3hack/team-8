@@ -84,28 +84,27 @@ app.post('/webhook', function (req, res, next) {
 function generateTemplate(event, obj) {
   if ('child' in obj) {
     // 質問する
-    console.log(obj);
-    console.log(obj.child);
     const request = {
       messages: [{
         type: 'template',
         template: {
           type: 'carousel',
-          columns: obj.child.map(item => ({
-            thumbnailImageUrl: item.image,
-            title: item.title,
-            text: item.text,
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: item.tag
-            }]
-          }))
+          columns: obj.child.map(item => {
+            console.log(item);
+            return {
+              thumbnailImageUrl: item.image,
+              title: item.title,
+              text: item.text,
+              actions: [{
+                type: 'postback',
+                label: '選択',
+                data: item.tag
+              }]
+            };
+          })
         }
       }]
     };
-    console.log(request.messages[0].columns);
-    console.log(request.messages[0].columns.actions);
     reply(event, request);
     return;
   }
