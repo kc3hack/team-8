@@ -140,6 +140,22 @@ function category(event) {
   })
 }
 
+async function reply(event, body) {
+  try {
+    await axios.post('https://api.line.me/v2/bot/message/reply', {
+      replyToken: event.replyToken,
+      ...body
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.channel_access_token}`
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 /*
 function foodCategory(event) {
   reply(event, {
