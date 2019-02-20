@@ -209,7 +209,8 @@ function category(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'food'
+             data: 'food',
+             displayText: '飲食'
            }]
           },
           {
@@ -219,7 +220,8 @@ function category(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'spot'
+              data: 'spot',
+              displayText: 'スポット'
             }]
           }
         ]
