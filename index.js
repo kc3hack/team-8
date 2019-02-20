@@ -58,42 +58,42 @@ app.post('/webhook', function (req, res, next) {
 
     if (event.type === 'postback') {
 
-      const eventPostbackData = event.Postback.Data;
+      // const eventPostbackData = event.Postback.Data;
 
       reply(event, {
         messages: [{
           type: 'text',
-          text: eventPostbackData === 'food'
+          text: event.Postback.Data === 'food'
               ? foodCategory(event)
-              : (eventPostbackData === 'spot'
+              : (event.Postback.Data === 'spot'
                 ? spotCategory(event)
-                : (eventPostbackData === 'flour'
+                : (event.Postback.Data === 'flour'
                   ? 'たこ焼きです。'
-                  : (eventPostbackData === 'sweet'
+                  : (event.Postback.Data === 'sweet'
                     ? 'スイーツです。'
-                    : (eventPostbackData === 'other'
+                    : (event.Postback.Data === 'other'
                       ? otherFoodCategory(event)
-                      : (eventPostbackData === 'sightseeing'
+                      : (event.Postback.Data === 'sightseeing'
                         ? sightseeingCategory(event)
-                        : (eventPostbackData === 'leisure'
+                        : (event.Postback.Data === 'leisure'
                           ? leisureCategory(event)
-                          : (eventPostbackData === 'shopping'
+                          : (event.Postback.Data === 'shopping'
                             ? 'ショッピングです。'
-                            : (eventPostbackData === 'history'
+                            : (event.Postback.Data === 'history'
                               ? historyCategory(event)
-                              : (eventPostbackData === 'walk'
+                              : (event.Postback.Data === 'walk'
                                 ? walkCategory(event)
-                                : (eventPostbackData === 'display'
+                                : (event.Postback.Data === 'display'
                                   ? displayCategory(event)
-                                  : (eventPostbackData === 'outdoor'
+                                  : (event.Postback.Data === 'outdoor'
                                     ? outdoorCategory(event)
-                                    : (eventPostbackData === 'amusement'
+                                    : (event.Postback.Data === 'amusement'
                                       ? amusementCategory(event)
-                                      : (eventPostbackData === 'view'
+                                      : (event.Postback.Data === 'view'
                                         ? viewCategory(event)
-                                        : (eventPostbackData === 'area'
+                                        : (event.Postback.Data === 'area'
                                           ? areaCategory(event)
-                                          : (eventPostbackData === 'animal'
+                                          : (event.Postback.Data === 'animal'
                                             ? animalCategory(event)
                                             : mountainCategory(event)
                                               )
