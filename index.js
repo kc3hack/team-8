@@ -90,7 +90,18 @@ function generateTemplate(event, obj) {
         altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
         template: {
           type: 'carousel',
-          columns: obj.child.map(item => {
+          columns: [
+            {
+              thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+              title: '飲食',
+              text: '>粉物,スイーツ,その他',
+              actions: [{
+                type: 'postback',
+                label: '選択',
+                data: 'food'
+              }]
+            }
+          ]/*obj.child.map(item => {
             console.log(item);
             return {
               thumbnailImageUrl: item.image,
@@ -102,7 +113,7 @@ function generateTemplate(event, obj) {
                 data: item.tag
               }]
             };
-          })
+          })*/
         }
       }]
     };
