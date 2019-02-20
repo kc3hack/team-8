@@ -1,0 +1,408 @@
+[
+  {
+    "tag": "food",
+    "title": "飲食",
+    "text": ">粉物・鉄板,軽食,スイーツ,その他",
+    "image": "https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg",
+    "child": [
+      {
+        "tag": "sweets",
+        "title": "スイーツ",
+        "text": "ケーキ、和菓子...etc",
+        "image": "http://gahag.net/img/201608/09s/gahag-011450.jpg"
+      },
+      {
+        "tag": "lightFood",
+        "title": "軽食",
+        "text": "",
+        "image": ""
+      },
+      {
+        "tag": "flour",
+        "title": "粉物・鉄板",
+        "text": "お好み焼き、たこ焼き...etc",
+        "image": "https://d1f5hsy4d47upe.cloudfront.net/9d/9d70d762fd1e29e3dc3a84b0469969bf_t.jpeg"
+      },
+      {
+        "tag": "otherFood",
+        "title": "その他",
+        "text": ">肉,魚,麺類,その他",
+        "image": "https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png",
+        "child": [
+          {
+            "tag": "meat",
+            "title": "肉",
+            "text": ">ハンバーグ・ステーキ,焼肉,しゃぶしゃぶ・すき焼き",
+            "image": "",
+            "child": [
+              {
+                "tag": "steak",
+                "title": "ハンバーグ・ステーキ",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "grilledMeat",
+                "title": "焼肉",
+                "text": "",
+                "image": "http://gahag.net/img/201604/12s/gahag-007541.jpg"
+              },
+              {
+                "tag": "sukiyaki",
+                "title": "しゃぶしゃぶ・すき焼き",
+                "text": "",
+                "image": "http://gahag.net/img/201510/24s/gahag-001783.jpg"
+              }
+            ]
+          },
+          {
+            "tag": "fish",
+            "title": "魚",
+            "text": ">寿司,海鮮",
+            "image": "",
+            "child": [
+              {
+                "tag": "sushi",
+                "title": "寿司",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "seafood",
+                "title": "海鮮",
+                "text": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "tag": "noodles",
+            "title": "麺類",
+            "text": "",
+            "image": "",
+            "child": [
+              {
+                "tag": "udon",
+                "title": "うどん・そば",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "ramen",
+                "title": "ラーメン",
+                "text": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "tag": "otherFood2",
+            "title": "その他",
+            "text": ">和食、アジア、ヨーロッパ",
+            "image": "other",
+            "child": [
+              {
+                "tag": "japaneseFood",
+                "title": "和食",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "asia",
+                "title": "アジア",
+                "text": "",
+                "image": "",
+                "child": [
+                  {
+                    "tag": "chineseFood",
+                    "title": "中華",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "indianFood",
+                    "title": "インド",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "thaiFood",
+                    "title": "タイ・ベトナム",
+                    "text": "",
+                    "image": ""
+                  }
+                ]
+              },
+              {
+                "tag": "europe",
+                "title": "ヨーロッパ",
+                "text": "",
+                "image": "",
+                "child": [
+                  {
+                    "tag": "french",
+                    "title": "フレンチ",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "italian",
+                    "title": "イタリアン",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "westernFood",
+                    "title": "その他洋食",
+                    "text": "",
+                    "image": ""
+                  }
+                ]
+              },
+              {
+                "tag": "otherFood3",
+                "title": "その他",
+                "text": "",
+                "image": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "spot",
+    "title": "スポット",
+    "text": ">観光、レジャー",
+    "image": "https://d1f5hsy4d47upe.cloudfront.net/d7/d7204f6c5a25a9bde5ae435b7c3b1ee9_w.jpg",
+    "child": [
+      {
+        "tag": "tourism",
+        "title": "観光",
+        "text": ">歴史・文化、散策、お風呂・温泉",
+        "image": "",
+        "child": [
+          {
+            "tag": "history",
+            "title": "歴史・文化",
+            "text": ">お城、神社・寺、遺跡・史跡、その他",
+            "image": "https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg",
+            "child": [
+              {
+                "tag": "castles",
+                "title": "お城",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "shrine",
+                "title": "神社・寺",
+                "text": "",
+                "image": "https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg"
+              },
+              {
+                "tag": "ruins",
+                "title": "遺跡・史跡",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "otherHistory",
+                "title": "その他",
+                "text": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "tag": "stroll",
+            "title": "散策",
+            "text": ">景色、名所",
+            "image": "",
+            "child": [
+              {
+                "tag": "scene",
+                "title": "景色",
+                "text": ">景観・絶景、展望台・施設",
+                "image": "",
+                "child": [
+                  {
+                    "tag": "superb",
+                    "title": "景観・絶景",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "sightSeeingTower",
+                    "title": "展望台・施設",
+                    "text": "",
+                    "image": ""
+                  }
+                ]
+              },
+              {
+                "tag": "sights",
+                "title": "名所",
+                "text": ">街並み、建築物、その他",
+                "image": "",
+                "child": [
+                  {
+                    "tag": "street",
+                    "title": "街並み",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "building",
+                    "title": "建築物",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "otherSights",
+                    "title": "その他",
+                    "text": "",
+                    "image": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "hotSpring",
+            "title": "お風呂・温泉",
+            "text": "",
+            "image": ""
+          }
+        ]
+      },
+      {
+        "tag": "leisure",
+        "title": "レジャー",
+        "text": ">展示、アウトドア・スポーツ、アミューズメント",
+        "image": "",
+        "child": [
+          {
+            "tag": "display",
+            "title": "展示",
+            "text": ">生物、博物館、美術館",
+            "image": "",
+            "child": [
+              {
+                "tag": "creature",
+                "title": "生物",
+                "text": ">動物園、水族館",
+                "image": "",
+                "child": [
+                  {
+                    "tag": "zoo",
+                    "title": "動物園",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "aquarium",
+                    "title": "水族館",
+                    "text": "",
+                    "image": ""
+                  }
+                ]
+              },
+              {
+                "tag": "museum",
+                "title": "博物館",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "artGallery",
+                "title": "美術館",
+                "text": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "tag": "outdoor",
+            "title": "アウトドア・スポーツ",
+            "text": ">山、海・川、施設",
+            "image": "",
+            "child": [
+              {
+                "tag": "mountain",
+                "title": "山",
+                "text": ">登山、キャンプ、スキー",
+                "image": "",
+                "child": [
+                  {
+                    "tag": "climbing",
+                    "title": "登山",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "camp",
+                    "title": "キャンプ",
+                    "text": "",
+                    "image": ""
+                  },
+                  {
+                    "tag": "ski",
+                    "title": " スキー",
+                    "text": "",
+                    "image": ""
+                  }
+                ]
+              },
+              {
+                "tag": "sea",
+                "title": "海・川",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "facility",
+                "title": "施設",
+                "text": "",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "tag": "amusement",
+            "title": "アミューズメント",
+            "text": ">テーマパーク・体験・文芸",
+            "image": "",
+            "child": [
+              {
+                "tag": "themePark",
+                "title": "テーマパーク",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "experience",
+                "title": "体験",
+                "text": "",
+                "image": ""
+              },
+              {
+                "tag": "literayArt",
+                "title": "文芸",
+                "text": "",
+                "image": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tag": "shopping",
+        "title": "ショッピング",
+        "text": "",
+        "image": ""
+      }
+    ]
+  }
+]
