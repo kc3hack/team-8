@@ -47,6 +47,9 @@ app.post('/webhook', function (req, res, next) {
         case 'テスト2':
           test2(event);
           break;
+        case 'テスト3':
+          category(evevnt);
+          break;
       }
       return;
     }
@@ -129,6 +132,40 @@ async function test2(event) {
   } catch (e) {
     console.log(e);
   }
+}
+
+function category(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+           title: '飲食',
+           text: '>粉物,スイーツ,その他',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'food'
+           }]
+          },
+          {
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/d7/d7204f6c5a25a9bde5ae435b7c3b1ee9_w.jpg',
+            title: 'スポット',
+            text: '>観光、レジャー',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sightseeing'
+            }]
+          }
+        ]
+      }
+    }]
+  })
 }
 
 async function reply(event, body) {
