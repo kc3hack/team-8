@@ -48,7 +48,7 @@ app.post('/webhook', function (req, res, next) {
           test2(event);
           break;
         case 'テスト3':
-          category(evevnt);
+          category(event);
           break;
       }
       return;
@@ -58,14 +58,32 @@ app.post('/webhook', function (req, res, next) {
       reply(event, {
         messages: [{
           type: 'text',
-          text: event.postback.data === 'hana'
-              ? '花「ありがとうございます。」'
-              : (event.postback.data === 'hinata'
-                  ? 'ひなた「やったぁー！」'
-                  : '乃愛「でっしょー？私が世界で一番かわいい！」')
+          text: event.postback.data === 'food'
+              ? foodCategory(event)
+              : (event.postback.data === 'sightseeing'
+                ? sightseeingCategory(event)
+                : (event.postback.data === 'flour'
+                  ? 'たこ焼きです。'
+                  : (event.postback.data === 'sweet'
+                    ? 'ケーキです。'
+                    : 'その他です。')
+                  )
+                )
         }]
       });
     }
+    // if (event.type === 'postback') {
+    //   reply(event, {
+    //     messages: [{
+    //       type: 'text',
+    //       text: event.postback.data === 'hana'
+    //           ? '花「ありがとうございます。」'
+    //           : (event.postback.data === 'hinata'
+    //               ? 'ひなた「やったぁー！」'
+    //               : '乃愛「でっしょー？私が世界で一番かわいい！」')
+    //     }]
+    //   });
+    // }
   }
 });
 
@@ -160,6 +178,49 @@ function category(event) {
               type: 'postback',
               label: '選択',
               data: 'sightseeing'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+function foodCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/9d/9d70d762fd1e29e3dc3a84b0469969bf_t.jpeg',
+           title: '粉物',
+           text: 'お好み焼き、たこ焼き...etc',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'flour'
+           }]
+          },
+          {
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/d7/d7204f6c5a25a9bde5ae435b7c3b1ee9_w.jpg',
+            title: 'スイーツ',
+            text: 'ケーキ、和菓子...etc',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sweet'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png',
+            title: 'その他',
+            text: '>肉、魚、その他',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'other'
             }]
           }
         ]
