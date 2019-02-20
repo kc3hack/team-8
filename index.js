@@ -84,6 +84,8 @@ app.post('/webhook', function (req, res, next) {
 function generateTemplate(event, obj) {
   if ('child' in obj) {
     // 質問する
+    console.log(obj);
+    console.log(obj.child);
     const request = {
       messages: [{
         type: 'template',
