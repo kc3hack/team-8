@@ -64,7 +64,7 @@ app.post('/webhook', function (req, res, next) {
         messages: [{
           type: 'text',
           text: eventPostbackData === 'food'
-              ? `好きな食べ物のカテゴリーを選んでください。${foodCategory(event)}`//変数が使えるか確認
+              ? foodCategory(event)
               : (eventPostbackData === 'spot'
                 ? spotCategory(event)
                 : (eventPostbackData === 'flour'
@@ -288,7 +288,7 @@ function spotCategory(event) {
              type: 'postback',
              label: '選択',
              data: 'sightseeing',
-             displayText: `${title}を選択しました。`//displayTextや変数が使えるか試し
+             displayText: `観光`
            }]
           },
           {
