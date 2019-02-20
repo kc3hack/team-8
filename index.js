@@ -66,7 +66,8 @@ app.post('/webhook', function (req, res, next) {
           text: event.Postback.Data === 'food'
               ? foodCategory(event)
               : (event.Postback.Data === 'spot'
-                ? spotCategory(event)
+                ? '観光です。'
+                // ? spotCategory(event)
                 : (event.Postback.Data === 'flour'
                   ? 'たこ焼きです。'
                   : (event.Postback.Data === 'sweet'
@@ -272,49 +273,49 @@ function foodCategory(event) {
   })
 }
 
-function spotCategory(event) {
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-           thumbnailImageUrl: '',
-           title: '観光',
-           text: '>歴史・文化、散策、お風呂・温泉',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'sightseeing'
-           }]
-          },
-          {
-            thumbnailImageUrl: '',
-            title: 'レジャー',
-            text: '>展示、アウトドア・スポーツ、アミューズメント',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'leisure'
-            }]
-          },
-          {
-            thumbnailImageUrl: '',
-            title: 'ショッピング',
-            text: '?',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'shopping'
-            }]
-          }
-        ]
-      }
-    }]
-  })
-}
+// function spotCategory(event) {
+//   reply(event, {
+//     messages: [{
+//       type: 'template',
+//       altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+//       template: {
+//         type: 'carousel',
+//         columns: [
+//           {
+//            thumbnailImageUrl: '',
+//            title: '観光',
+//            text: '>歴史・文化、散策、お風呂・温泉',
+//            actions: [{
+//              type: 'postback',
+//              label: '選択',
+//              data: 'sightseeing'
+//            }]
+//           },
+//           {
+//             thumbnailImageUrl: '',
+//             title: 'レジャー',
+//             text: '>展示、アウトドア・スポーツ、アミューズメント',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'leisure'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: '',
+//             title: 'ショッピング',
+//             text: '?',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'shopping'
+//             }]
+//           }
+//         ]
+//       }
+//     }]
+//   })
+// }
 
 // function otherFoodCategory(event) {
 //   reply(event, {
