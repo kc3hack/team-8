@@ -93,6 +93,7 @@ app.post('/webhook', function (req, res, next) {
                                       ? leisureCategory(event)
                                       : (eventPostbackData === 'shopping'
                                         ? 'ショッピングです。'
+                                        : '選択しました。'
                                 //       : (eventPostbackData === 'history'
                                 //         ? historyCategory(event)
                                 //         : (eventPostbackData === 'walk'
@@ -111,7 +112,7 @@ app.post('/webhook', function (req, res, next) {
                                 //                       ? animalCategory(event)
                                 //                       : (eventPostbackData === 'mountain'
                                 //                         ? mountainCategory(event)
-                                                        : '選択しました。'
+                                                        // : '選択しました。'
                                 //                         )
                                 //                       )
                                 //                     )
@@ -367,8 +368,7 @@ function foodCategory(event) {
               label: '選択',
               data: 'sweet'
             }]
-          }
-          ,
+          },
           {
             thumbnailImageUrl: 'http://gahag.net/img/201608/17s/gahag-011689.jpg',
             title: 'その他',
