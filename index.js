@@ -38,6 +38,27 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+async function getMatchDocuments(matchTxt) {
+  let placeCardId = []
+  let placeCards = []
+  let queryRef = await db.collection(getCollectionList["paths"]).where("path", "==", matchTxt);
+
+  await queryRef.get().then(res => {
+      res.forEach(doc => {
+          doc.get("hits").forEach(hit => {
+              let hitArray = hit.path.split("/")
+              placeCardId.push(hit.id)
+          })
+      })
+  })
+  for (i of placeCardId) {
+      placeCards.push(await db.collection(getCollectionList["pages"]).doc(i).get()
+          .then(doc => { return doc.data() }))
+  }
+  const placeCard = placeCards.sort(function () { Math.random() - .5; }).pop()
+  return placeCard
+};
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -51,7 +72,7 @@ app.get('/', (req, res, next) => {
 
 app.post('/webhook', function (req, res, next) {
   res.status(200).end();
-
+  let categoryText = '';
   for (let event of req.body.events) {
     if (event.type === 'message') {
       switch (event.message.text) {
@@ -74,7 +95,7 @@ app.post('/webhook', function (req, res, next) {
                   : (eventPostbackData === 'otherFood'
                     ? otherFoodCategory(event)
                     : (eventPostbackData === 'flour'
-                      ? 'たこ焼きです。'
+                      ? get(eventPostbackData)
                       : (eventPostbackData === 'sweet'
                         ? 'スイーツです。'
                         : (eventPostbackData === 'otherOtherFood' //和食とかアジア
@@ -333,6 +354,8 @@ function category(event) {
   })
 }
 function foodCategory(event) {
+  categoryText  = categoryText+ '/'+'food';
+
   reply(event, {
     messages: [{
       type: 'template',
@@ -1089,7 +1112,35 @@ function mountainCategory(event) {
   })
 }
 
-
+function get(eventPostbackData){
+  categoryText = categoryText + '/'+ eventPostbackData;
+  (async () => {
+    let placeCard = await getMatchDocuments(categoryText);
+    console.log(placeCard)
+  })();
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: placeCard.img,
+           title: placeCard.title
+          //  text: '選択しました。'
+          //  actions: [{
+          //    type: 'postback',
+          //    label: '選択',
+          //    data: 'moutain',
+          //    displayText: '山を選択しました。'
+          //  }]
+          }
+        ]
+      }
+    }]
+  }) 
+}
 
 async function reply(event, body) {
   try {
