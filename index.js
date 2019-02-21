@@ -69,64 +69,71 @@ app.post('/webhook', function (req, res, next) {
           type: 'text',
           text: eventPostbackData === 'food'
                 ? foodCategory(event)
-                // :(eventPostbackData === 'spot'
-                //   ? spotCategory(event)
+                :(eventPostbackData === 'spot'
+                  ? spotCategory(event)
                   :(eventPostbackData === 'otherFood'
                     ? otherFoodCategory(event)
                     : (eventPostbackData === 'flour'
                       ? 'たこ焼きです。'
                       : (eventPostbackData === 'sweet'
                         ? 'スイーツです。'
-                        : (eventPostbackData === 'otherFood'
-                          ? otherFoodCategory(event)
+                        : (eventPostbackData === 'otherOtherFood' //和食とかアジア
+                          ? otherOtherFoodCategory(event)
                           : (eventPostbackData === 'meat'
                             ? meatCategory(event)
-                            : '選択しました。'
-                            // : (eventPostbackData === '')
-                            // : (eventPostbackData === 'sightseeing'
-                            //   ? sightseeingCategory(event)
-                            //   : (eventPostbackData === 'leisure'
-                            //     ? leisureCategory(event)
-                            //     : (eventPostbackData === 'shopping'
-                            //       ? 'ショッピングです。'
-                            //       : (eventPostbackData === 'history'
-                            //         ? historyCategory(event)
-                            //         : (eventPostbackData === 'walk'
-                            //           ? walkCategory(event)
-                            //           : (eventPostbackData === 'display'
-                            //             ? displayCategory(event)
-                            //             : (eventPostbackData === 'outdoor'
-                            //               ? outdoorCategory(event)
-                            //               : (eventPostbackData === 'amusement'
-                            //                 ? amusementCategory(event)
-                            //                 : (eventPostbackData === 'view'
-                            //                   ? viewCategory(event)
-                            //                   : (eventPostbackData === 'area'
-                            //                     ? areaCategory(event)
-                            //                     : (eventPostbackData === 'animal'
-                            //                       ? animalCategory(event)
-                            //                       : (eventPostbackData === 'mountain'
-                            //                         ? mountainCategory(event)
-                                                    // : '選択しました。'
-                            //                         )
-                            //                       )
-                            //                     )
-                            //                   )
-                            //                 )
-                            //               )
-                            //             )
+                            : (eventPostbackData === 'fish'
+                              ? fishCategory(event)
+                              : (eventPostbackData === 'sushi'
+                                ? '寿司です。'
+                                : (eventPostbackData === 'sashimi'
+                                  ? '海鮮です。'
+                                  : '選択しました。'
+                                // : (eventPostbackData === 'sightseeing'
+                                //   ? sightseeingCategory(event)
+                                //   : (eventPostbackData === 'leisure'
+                                //     ? leisureCategory(event)
+                                //     : (eventPostbackData === 'shopping'
+                                //       ? 'ショッピングです。'
+                                //       : (eventPostbackData === 'history'
+                                //         ? historyCategory(event)
+                                //         : (eventPostbackData === 'walk'
+                                //           ? walkCategory(event)
+                                //           : (eventPostbackData === 'display'
+                                //             ? displayCategory(event)
+                                //             : (eventPostbackData === 'outdoor'
+                                //               ? outdoorCategory(event)
+                                //               : (eventPostbackData === 'amusement'
+                                //                 ? amusementCategory(event)
+                                //                 : (eventPostbackData === 'view'
+                                //                   ? viewCategory(event)
+                                //                   : (eventPostbackData === 'area'
+                                //                     ? areaCategory(event)
+                                //                     : (eventPostbackData === 'animal'
+                                //                       ? animalCategory(event)
+                                //                       : (eventPostbackData === 'mountain'
+                                //                         ? mountainCategory(event)
+                                                        // : '選択しました。'
+                                //                         )
+                                //                       )
+                                //                     )
+                                //                   )
+                                //                 )
+                                //               )
+                                //             )
+                                          // )
+                                        // )
                                       // )
-                                    // )
-                                  // )
-                            //     )
-                            //   )
-                            // )
+                                //     )
+                                //   )
+                                // )
+                                )
+                              )
                             )  
                           )
                         )
                       )
                     )
-                    
+
         }]
       })
 
@@ -468,7 +475,39 @@ function meatCategory(event) {
     }]
   })
 }
-
+function fishCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201511/17s/gahag-002640.jpg',
+            title: '寿司',
+            text: '寿司',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sushi'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201509/28s/gahag-000871.jpg',
+            title: '海鮮',
+            text: '海鮮',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sashimi'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
 function spotCategory(event) {
   reply(event, {
     messages: [{
@@ -512,7 +551,7 @@ function spotCategory(event) {
     }]
   })
 }
-function otherFoodCategory(event) {
+function otherOtherFoodCategory(event) {
   reply(event, {
     messages: [{
       type: 'template',
@@ -527,19 +566,37 @@ function otherFoodCategory(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'wasyoku',
-             displayText: '和食を選択しました。'
-           }]
+             data: 'japan'
+            }]
           },
           {
             thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
-            title: '中華',
-            text: '中華',
+            title: 'アジア',
+            text: 'アジア',
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'tyuka',
-              displayText: '中華を選択しました。'
+              data: 'country'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+            title: 'ヨーロッパ',
+            text: 'ヨーロッパ',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'europeana'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+            title: 'その他',
+            text: 'その他',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'lastOtherFood'
             }]
           }
         ]
