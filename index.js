@@ -773,7 +773,6 @@ function mountainCategory(event) {
     }]
   })
 }
->>>>>>> 4605ef4181f7272c6b714545354ad3a34df9a889
 
 async function reply(event, body) {
   try {
