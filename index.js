@@ -684,50 +684,50 @@ function sightseeingCategory(event) {
     }]
   })
 }
-// function leisureCategory(event) {
-//   reply(event, {
-//     messages: [{
-//       type: 'template',
-//       altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-//       template: {
-//         type: 'carousel',
-//         columns: [
-//           {
-//             thumbnailImageUrl: 'https://images.unsplash.com/photo-1530263131525-1c1d26feaa60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80',
-//             title: '展示',
-//             text: '>生物、博物館、美術館',
-//             actions: [{
-//               type: 'postback',
-//               label: '選択',
-//               data: 'display'
-//            }]
-//           },
-//           {
-//             thumbnailImageUrl: 'http://gahag.net/img/201607/23s/gahag-0108929594-1.jpg',
-//             title: 'アウトドア・スポーツ',
-//             text: '>山、海・川、施設',
-//             actions: [{
-//               type: 'postback',
-//               label: '選択',
-//               data: 'outdoor'
-//             }]
-//           },
-//           {
-//             thumbnailImageUrl: 'http://gahag.net/img/201509/18s/gahag-0005343950-1.jpg',
-//             title: 'アミューズメントパーク',
-//             text: '>テーマパーク・体験・文芸',
-//             actions: [{
-//               type: 'postback',
-//               label: '選択',
-//               data: 'amusement',
-//               displayText: 'アミューズメントパークを選択しました。'
-//             }]
-//           }
-//         ]
-//       }
-//     }]
-//   })
-// }
+function leisureCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+            thumbnailImageUrl: 'https://images.unsplash.com/photo-1530263131525-1c1d26feaa60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80',
+            title: '展示',
+            text: '>生物、博物館、美術館',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'display'
+           }]
+          },
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201607/23s/gahag-0108929594-1.jpg',
+            title: 'アウトドア・スポーツ',
+            text: '>山、海・川、施設',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'outdoor'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201509/18s/gahag-0005343950-1.jpg',
+            title: 'アミューズメントパーク',
+            text: '>テーマパーク・体験・文芸',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'amusement',
+              displayText: 'アミューズメントパークを選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
 function historyCategory(event) {
   reply(event, {
     messages: [{
