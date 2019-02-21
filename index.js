@@ -1124,7 +1124,7 @@ function get(eventPostbackData,event,categoryText){
   } 
   else {
     (async () => {
-      let placeCard = await getMatchDocuments(categoryText);
+      let placeCard = await getMatchDocuments("food/flour");
       console.log(placeCard)
 
       // reply(event, {
