@@ -93,9 +93,9 @@ app.post('/webhook', function (req, res, next) {
                                       ? leisureCategory(event)
                                       : (eventPostbackData === 'shopping'
                                         ? 'ショッピングです。'
-                                        : '選択しました。'
-                                //       : (eventPostbackData === 'history'
-                                //         ? historyCategory(event)
+                                        : (eventPostbackData === 'history'
+                                          ? historyCategory(event)
+                                          : '選択しました。'
                                 //         : (eventPostbackData === 'walk'
                                 //           ? walkCategory(event)
                                 //           : (eventPostbackData === 'display'
@@ -368,151 +368,152 @@ function foodCategory(event) {
               label: '選択',
               data: 'sweet'
             }]
-          },
-          {
-            thumbnailImageUrl: 'https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png',
-            title: 'その他',
-            text: '>肉、魚、麺類、その他',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'otherFood'
-            }]
           }
+          // ,
+          // {
+          //   thumbnailImageUrl: 'https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png',
+          //   title: 'その他',
+          //   text: '>肉、魚、麺類、その他',
+          //   actions: [{
+          //     type: 'postback',
+          //     label: '選択',
+          //     data: 'otherFood'
+          //   }]
+          // }
         ]
       }
     }]
   })
 }
-function otherFoodCategory(event) {
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-           thumbnailImageUrl: 'http://earth.publicdomainq.net/201705/19o/publicdomainq-0009201gwxpbl.jpg',
-           title: '肉',
-           text: '>ハンバーグ・ステーキ,焼肉,しゃぶしゃぶ・すき焼き',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'meat'
-           }]
-          },
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201601/12s/gahag-004510.jpg',
-            title: '魚',
-            text: '>寿司、海鮮',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'sushi'
-            }]
-          },
-          {
-            thumbnailImageUrl: 'https://publicdomainq.net/images/201810/07s/publicdomainq-0027082.jpg',
-            title: '麺類',
-            text: '>うどん・そば、ラーメン',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'noodle'
-            }]
-          },
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201510/20s/gahag-001663.jpg',
-            title: 'その他',
-            text: '>和食、アジア、ヨーロッパ、その他',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'otherOtherFood'
-            }]
-          }
-        ]
-      }
-    }]
-  })
-}
-function meatCategory(event) {
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201512/25s/gahag-003990.jpg',
-            title: 'ハンバーグ・ステーキ',
-            text: 'ハンバーグ・ステーキ',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'steak'
-            }]
-          },
-          {
-            thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550701359/sweets.jpg',
-            title: '焼肉',
-            text: '焼肉',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'grilledMeat'
-            }]
-          },
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201510/24s/gahag-001783.jpg',
-            title: 'しゃぶしゃぶ・すき焼き',
-            text: 'しゃぶしゃぶ・すき焼き',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'sukiyaki'
-            }]
-          }
-        ]
-      }
-    }]
-  })
-}
-function fishCategory(event) {
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201511/17s/gahag-002640.jpg',
-            title: '寿司',
-            text: '寿司',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'sushi'
-            }]
-          },
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201509/28s/gahag-000871.jpg',
-            title: '海鮮',
-            text: '海鮮',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'sashimi'
-            }]
-          }
-        ]
-      }
-    }]
-  })
-}
+// function otherFoodCategory(event) {
+//   reply(event, {
+//     messages: [{
+//       type: 'template',
+//       altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+//       template: {
+//         type: 'carousel',
+//         columns: [
+//           {
+//            thumbnailImageUrl: 'http://earth.publicdomainq.net/201705/19o/publicdomainq-0009201gwxpbl.jpg',
+//            title: '肉',
+//            text: '>ハンバーグ・ステーキ,焼肉,しゃぶしゃぶ・すき焼き',
+//            actions: [{
+//              type: 'postback',
+//              label: '選択',
+//              data: 'meat'
+//            }]
+//           },
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201601/12s/gahag-004510.jpg',
+//             title: '魚',
+//             text: '>寿司、海鮮',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'sushi'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: 'https://publicdomainq.net/images/201810/07s/publicdomainq-0027082.jpg',
+//             title: '麺類',
+//             text: '>うどん・そば、ラーメン',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'noodle'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201510/20s/gahag-001663.jpg',
+//             title: 'その他',
+//             text: '>和食、アジア、ヨーロッパ、その他',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'otherOtherFood'
+//             }]
+//           }
+//         ]
+//       }
+//     }]
+//   })
+// }
+// function meatCategory(event) {
+//   reply(event, {
+//     messages: [{
+//       type: 'template',
+//       altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+//       template: {
+//         type: 'carousel',
+//         columns: [
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201512/25s/gahag-003990.jpg',
+//             title: 'ハンバーグ・ステーキ',
+//             text: 'ハンバーグ・ステーキ',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'steak'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550701359/sweets.jpg',
+//             title: '焼肉',
+//             text: '焼肉',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'grilledMeat'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201510/24s/gahag-001783.jpg',
+//             title: 'しゃぶしゃぶ・すき焼き',
+//             text: 'しゃぶしゃぶ・すき焼き',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'sukiyaki'
+//             }]
+//           }
+//         ]
+//       }
+//     }]
+//   })
+// }
+// function fishCategory(event) {
+//   reply(event, {
+//     messages: [{
+//       type: 'template',
+//       altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+//       template: {
+//         type: 'carousel',
+//         columns: [
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201511/17s/gahag-002640.jpg',
+//             title: '寿司',
+//             text: '寿司',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'sushi'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201509/28s/gahag-000871.jpg',
+//             title: '海鮮',
+//             text: '海鮮',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'sashimi'
+//             }]
+//           }
+//         ]
+//       }
+//     }]
+//   })
+// }
 function spotCategory(event) {
   reply(event, {
     messages: [{
@@ -530,17 +531,19 @@ function spotCategory(event) {
              label: '選択',
              data: 'sightseeing'
            }]
-          },
-          {
-            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558__340.jpg',
-            title: 'レジャー',
-            text: '>展示、アウトドア・スポーツ、アミューズメント',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'leisure'
-            }]
-          },
+          }
+          // ,
+          // {
+          //   thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558__340.jpg',
+          //   title: 'レジャー',
+          //   text: '>展示、アウトドア・スポーツ、アミューズメント',
+          //   actions: [{
+          //     type: 'postback',
+          //     label: '選択',
+          //     data: 'leisure'
+          //   }]
+          // }
+          ,
           {
             thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2016/11/22/19/08/blur-1850082__340.jpg',
             title: 'ショッピング',
@@ -624,19 +627,17 @@ function sightseeingCategory(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'history',
-             displayText: '歴史・文化を選択しました。'
+             data: 'history'
            }]
           },
           {
-            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V1.jpg',
+            thumbnailImageUrl: 'http://gahag.net/img/201605/25s/gahag-008967.jpg',
             title: '散策',
             text: '>景色、名所',
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'walk',
-              displayText: '散策を選択しました。'
+              data: 'walk'
             }]
           },
           {
@@ -646,8 +647,7 @@ function sightseeingCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'bath',
-              displayText: 'お風呂・温泉を選択しました。'
+              data: 'bath'
             }]
           }
         ]
@@ -655,50 +655,50 @@ function sightseeingCategory(event) {
     }]
   })
 }
-function leisureCategory(event) {
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-            thumbnailImageUrl: 'https://images.unsplash.com/photo-1530263131525-1c1d26feaa60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80',
-            title: '展示',
-            text: '>生物、博物館、美術館',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'display'
-           }]
-          },
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201607/23s/gahag-0108929594-1.jpg',
-            title: 'アウトドア・スポーツ',
-            text: '>山、海・川、施設',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'outdoor'
-            }]
-          },
-          {
-            thumbnailImageUrl: 'http://gahag.net/img/201509/18s/gahag-0005343950-1.jpg',
-            title: 'アミューズメントパーク',
-            text: '>テーマパーク・体験・文芸',
-            actions: [{
-              type: 'postback',
-              label: '選択',
-              data: 'amusement',
-              displayText: 'アミューズメントパークを選択しました。'
-            }]
-          }
-        ]
-      }
-    }]
-  })
-}
+// function leisureCategory(event) {
+//   reply(event, {
+//     messages: [{
+//       type: 'template',
+//       altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+//       template: {
+//         type: 'carousel',
+//         columns: [
+//           {
+//             thumbnailImageUrl: 'https://images.unsplash.com/photo-1530263131525-1c1d26feaa60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80',
+//             title: '展示',
+//             text: '>生物、博物館、美術館',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'display'
+//            }]
+//           },
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201607/23s/gahag-0108929594-1.jpg',
+//             title: 'アウトドア・スポーツ',
+//             text: '>山、海・川、施設',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'outdoor'
+//             }]
+//           },
+//           {
+//             thumbnailImageUrl: 'http://gahag.net/img/201509/18s/gahag-0005343950-1.jpg',
+//             title: 'アミューズメントパーク',
+//             text: '>テーマパーク・体験・文芸',
+//             actions: [{
+//               type: 'postback',
+//               label: '選択',
+//               data: 'amusement',
+//               displayText: 'アミューズメントパークを選択しました。'
+//             }]
+//           }
+//         ]
+//       }
+//     }]
+//   })
+// }
 function historyCategory(event) {
   reply(event, {
     messages: [{
@@ -708,47 +708,43 @@ function historyCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
+           thumbnailImageUrl: 'http://gahag.net/img/201608/05s/gahag-011321.jpg',
            title: 'お城',
-           text: '',
+           text: 'お城',
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'castle',
-             displayText: 'お城を選択しました。'
+             data: 'castle'
            }]
           },
           {
-            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg',
+            'https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg',
             title: '神社・寺',
-            text: '',
+            text: '神社,寺',
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'shrine',
-              displayText: '神社・寺を選択しました。'
+              data: 'shrine'
             }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/008AME5031_TP_V.jpg',
             title: '遺跡・史跡',
-            text: '',
+            text: '遺跡,史跡',
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'remain',
-              displayText: '遺跡・史跡を選択しました。'
+              data: 'remain'
             }]
           },
           {
-            thumbnailImageUrl: '',
+            'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V.jpg',
             title: 'その他',
-            text: '',
+            text: '歴史的建造物',
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'odaNobunaga',
-              displayText: 'その他を選択しました。'
+              data: 'odaNobunaga'
             }]
           }
         ]
