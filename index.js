@@ -89,13 +89,16 @@ app.post('/webhook', function (req, res, next) {
         messages: [{
           type: 'text',
           text: eventPostbackData === 'food'
-                ? foodCategory(event)
+                ? get(eventPostbackData,event)
+
                 : (eventPostbackData === 'spot'
                   ? spotCategory(event)
                   : (eventPostbackData === 'otherFood'
                     ? otherFoodCategory(event)
+
                     : (eventPostbackData === 'flour'
-                      ? get(eventPostbackData)
+                      ? get(eventPostbackData,event)
+
                       : (eventPostbackData === 'sweet'
                         ? 'スイーツです。'
                         : (eventPostbackData === 'otherOtherFood' //和食とかアジア
@@ -1112,34 +1115,39 @@ function mountainCategory(event) {
   })
 }
 
-function get(eventPostbackData){
+function get(eventPostbackData,event){
   categoryText = categoryText + '/'+ eventPostbackData;
-  (async () => {
-    let placeCard = await getMatchDocuments(categoryText);
-    console.log(placeCard)
-  })();
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-           thumbnailImageUrl: placeCard.img,
-           title: placeCard.title
-          //  text: '選択しました。'
-          //  actions: [{
-          //    type: 'postback',
-          //    label: '選択',
-          //    data: 'moutain',
-          //    displayText: '山を選択しました。'
-          //  }]
-          }
-        ]
-      }
-    }]
-  }) 
+  if (categoryText === 'food') {
+    foodCategory(event);
+  } 
+  else {
+    (async () => {
+      let placeCard = await getMatchDocuments(categoryText);
+      console.log(placeCard)
+    })();
+    reply(event, {
+      messages: [{
+        type: 'template',
+        altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+        template: {
+          type: 'carousel',
+          columns: [
+            {
+            thumbnailImageUrl: placeCard.img,
+            title: placeCard.title
+            //  text: '選択しました。'
+            //  actions: [{
+            //    type: 'postback',
+            //    label: '選択',
+            //    data: 'moutain',
+            //    displayText: '山を選択しました。'
+            //  }]
+            }
+          ]
+        }
+      }]
+    }) 
+  }
 }
 
 async function reply(event, body) {
