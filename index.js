@@ -1118,28 +1118,28 @@ function mountainCategory(event) {
 
 function get(eventPostbackData,event,categoryText){
   categoryText = categoryText + '/'+ eventPostbackData;
-  reply(event, {
-    messages: [{
-      type: 'template',
-      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-      template: {
-        type: 'carousel',
-        columns: [
-          {
-          thumbnailImageUrl: placeCard.img,
-          title: placeCard.title
-          //  text: '選択しました。'
-          //  actions: [{
-          //    type: 'postback',
-          //    label: '選択',
-          //    data: 'moutain',
-          //    displayText: '山を選択しました。'
-          //  }]
-          }
-        ]
-      }
-    }]
-  }) 
+  // reply(event, {
+  //   messages: [{
+  //     type: 'template',
+  //     altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+  //     template: {
+  //       type: 'carousel',
+  //       columns: [
+  //         {
+  //         thumbnailImageUrl: placeCard.img,
+  //         title: placeCard.title
+  //         //  text: '選択しました。'
+  //         //  actions: [{
+  //         //    type: 'postback',
+  //         //    label: '選択',
+  //         //    data: 'moutain',
+  //         //    displayText: '山を選択しました。'
+  //         //  }]
+  //         }
+  //       ]
+  //     }
+  //   }]
+  // }) 
   if (eventPostbackData === 'food') {
     foodCategory(event);
   } 
