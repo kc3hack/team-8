@@ -89,7 +89,7 @@ app.post('/webhook', function (req, res, next) {
         messages: [{
           type: 'text',
           text: eventPostbackData === 'food'
-                ? foodCategory(event)
+                ? foodCategory(event,categoryText)
                 // ? get(eventPostbackData,event)
 
                 : (eventPostbackData === 'spot'
@@ -357,7 +357,7 @@ function category(event) {
     }]
   })
 }
-function foodCategory(event) {
+function foodCategory(event,categoryText) {
   categoryText  = categoryText+ '/'+'food';
 
   reply(event, {
