@@ -69,9 +69,9 @@ app.post('/webhook', function (req, res, next) {
           type: 'text',
           text: eventPostbackData === 'food'
                 ? foodCategory(event)
-                :(eventPostbackData === 'spot'
+                : (eventPostbackData === 'spot'
                   ? spotCategory(event)
-                  :(eventPostbackData === 'otherFood'
+                  : (eventPostbackData === 'otherFood'
                     ? otherFoodCategory(event)
                     : (eventPostbackData === 'flour'
                       ? 'たこ焼きです。'
@@ -138,86 +138,89 @@ app.post('/webhook', function (req, res, next) {
 
         }]
       })
+/*
+      let text;
+      switch (eventPostbackData) {
+        case 'food':
+          text = foodCategory(event);
+          break;
+        case 'spot':
+          text = spotCategory(event);
+          break;
+        case 'flour':
+          text = 'たこ焼きです。';
+          break;
+        case 'snack':
+          text = '軽食です。';
+          break;
+        case 'sweet':
+          text = 'スイーツです。';
+          break;
+        case 'other':
+          text = otherFoodCategory(event);
+          break;
+        case 'sightseeing':
+          text = sightseeingCategory(event);
+          break;
+        case 'leisure':
+          text = leisureCategory(event);
+          break;
+        case 'shopping':
+          text = 'ショッピングです。'
+          break;
+        case 'history':
+          text = historyCategory(event);
+          break;
+        case 'walk':
+          text = walkCategory(event);
+          break;
+        case 'display':
+          text = displayCategory(event);
+          break;
+        case 'outdoor':
+          text = outdoorCategory(event);
+          break;
+        case 'amusement':
+          text = amusementCategory(event);
+          break;
+        case 'view':
+          text = viewCategory(event);
+          break;
+        case 'area':
+          text = areaCategory(event);
+          break;
+        case 'animal':
+          text = animalCategory(event);
+          break;
+        case 'mountain':
+          text = mountainCategory(event);
+          break;
+        default:
+          console.error(`不正な postback です: ${eventPostbackData}`);
+          return;
+      }
+*/
+     
+      /*  
+      reply(event, {
+        messages: [{
+          type: 'text',
+          text: text
+        }]
+      })
 
-      // let text;
-      // switch (eventPostbackData) {
-      //   case 'food':
-      //     text = foodCategory(event);
-      //     break;
-      //   case 'spot':
-      //     text = spotCategory(event);
-      //     break;
-      //   case 'flour':
-      //     text = 'たこ焼きです。';
-      //     break;
-      //   case 'snack':
-      //     text = '軽食です。';
-      //     break;
-      //   case 'sweet':
-      //     text = 'スイーツです。';
-      //     break;
-      //   case 'other':
-      //     text = otherFoodCategory(event);
-      //     break;
-      //   case 'sightseeing':
-      //     text = sightseeingCategory(event);
-      //     break;
-      //   case 'leisure':
-      //     text = leisureCategory(event);
-      //     break;
-      //   case 'shopping':
-      //     text = 'ショッピングです。'
-      //     break;
-      //   case 'history':
-      //     text = historyCategory(event);
-      //     break;
-      //   case 'walk':
-      //     text = walkCategory(event);
-      //     break;
-      //   case 'display':
-      //     text = displayCategory(event);
-      //     break;
-      //   case 'outdoor':
-      //     text = outdoorCategory(event);
-      //     break;
-      //   case 'amusement':
-      //     text = amusementCategory(event);
-      //     break;
-      //   case 'view':
-      //     text = viewCategory(event);
-      //     break;
-      //   case 'area':
-      //     text = areaCategory(event);
-      //     break;
-      //   case 'animal':
-      //     text = animalCategory(event);
-      //     break;
-      //   case 'mountain':
-      //     text = mountainCategory(event);
-      //     break;
-      //   default:
-      //     console.error(`不正な postback です: ${eventPostbackData}`);
-      //     return;
-      // }
-
-      // reply(event, {
-      //   messages: [{
-      //     type: 'text',
-      //     text: text
-      //   }]
-      // })
-
-      // for (let i = 0; i < paths.length; i ++) {
-      //   const result = seek(paths[i], eventPostbackData);
-      //   if (result !== null) {
-      //     generateTemplate(event, result);
-      //     return;
-      //   }
-      //   if (i === paths.length - 1) {
-      //     console.error('不正な postback です');
-      //     return;
-      //   }
-      // }
+      for (let i = 0; i < paths.length; i ++) {
+        const result = seek(paths[i], eventPostbackData);
+        if (result !== null) {
+          generateTemplate(event, result);
+          return;
+        }
+        if (i === paths.length - 1) {
+          console.error('不正な postback です');
+          return;
+        }
+      }
+      */
     }
   }
 });
@@ -519,7 +522,7 @@ function spotCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
+           thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/syunsetuFTHG8406_TP_V1.jpg',
            title: '観光',
            text: '>歴史・文化、散策、お風呂・温泉',
            actions: [{
@@ -529,7 +532,7 @@ function spotCategory(event) {
            }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558__340.jpg',
             title: 'レジャー',
             text: '>展示、アウトドア・スポーツ、アミューズメント',
             actions: [{
@@ -539,7 +542,7 @@ function spotCategory(event) {
             }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/08/05/00/12/people-2581913_960_720.jpg',
             title: 'ショッピング',
             text: 'ショッピング',
             actions: [{
