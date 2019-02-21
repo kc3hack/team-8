@@ -89,7 +89,8 @@ app.post('/webhook', function (req, res, next) {
         messages: [{
           type: 'text',
           text: eventPostbackData === 'food'
-                ? get(eventPostbackData,event)
+                ? foodCategory(event)
+                // ? get(eventPostbackData,event)
 
                 : (eventPostbackData === 'spot'
                   ? spotCategory(event)
@@ -97,7 +98,7 @@ app.post('/webhook', function (req, res, next) {
                     ? otherFoodCategory(event)
 
                     : (eventPostbackData === 'flour'
-                      ? get(eventPostbackData,event)
+                      ? get(eventPostbackData,event,categoryText)
 
                       : (eventPostbackData === 'sweet'
                         ? 'スイーツです。'
@@ -1115,8 +1116,30 @@ function mountainCategory(event) {
   })
 }
 
-function get(eventPostbackData,event){
+function get(eventPostbackData,event,categoryText){
   categoryText = categoryText + '/'+ eventPostbackData;
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+          thumbnailImageUrl: placeCard.img,
+          title: placeCard.title
+          //  text: '選択しました。'
+          //  actions: [{
+          //    type: 'postback',
+          //    label: '選択',
+          //    data: 'moutain',
+          //    displayText: '山を選択しました。'
+          //  }]
+          }
+        ]
+      }
+    }]
+  }) 
   if (eventPostbackData === 'food') {
     foodCategory(event);
   } 
