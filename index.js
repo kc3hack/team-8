@@ -719,7 +719,7 @@ function historyCategory(event) {
            }]
           },
           {
-            'https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg',
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/kyotoIMGL6547_TP_V.jpg',
             title: '神社・寺',
             text: '神社,寺',
             actions: [{
