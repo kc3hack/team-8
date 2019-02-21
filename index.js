@@ -77,7 +77,7 @@ app.post('/webhook', function (req, res, next) {
   for (let event of req.body.events) {
     if (event.type === 'message') {
       switch (event.message.text) {
-        case 'おばちゃんちょうだい':
+        case 'おしえて':
           category(event);
           break;
       }
