@@ -87,13 +87,13 @@ app.post('/webhook', function (req, res, next) {
                                 ? '寿司です。'
                                 : (eventPostbackData === 'sashimi'
                                   ? '海鮮です。'
-                                  : '選択しました。'
-                                // : (eventPostbackData === 'sightseeing'
-                                //   ? sightseeingCategory(event)
-                                //   : (eventPostbackData === 'leisure'
-                                //     ? leisureCategory(event)
-                                //     : (eventPostbackData === 'shopping'
-                                //       ? 'ショッピングです。'
+                                  : (eventPostbackData === 'sightseeing'
+                                    ? sightseeingCategory(event)
+                                    : (eventPostbackData === 'leisure'
+                                      ? leisureCategory(event)
+                                      : (eventPostbackData === 'shopping'
+                                        ? 'ショッピングです。'
+                                        : '選択しました。'
                                 //       : (eventPostbackData === 'history'
                                 //         ? historyCategory(event)
                                 //         : (eventPostbackData === 'walk'
@@ -123,9 +123,9 @@ app.post('/webhook', function (req, res, next) {
                                           // )
                                         // )
                                       // )
-                                //     )
-                                //   )
-                                // )
+                                      )
+                                    )
+                                  )
                                 )
                               )
                             )  
@@ -542,7 +542,7 @@ function spotCategory(event) {
             }]
           },
           {
-            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/08/05/00/12/people-2581913_960_720.jpg',
+            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2016/11/22/19/08/blur-1850082__340.jpg',
             title: 'ショッピング',
             text: 'ショッピング',
             actions: [{
@@ -629,7 +629,7 @@ function sightseeingCategory(event) {
            }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V1.jpg',
             title: '散策',
             text: '>景色、名所',
             actions: [{
@@ -640,9 +640,9 @@ function sightseeingCategory(event) {
             }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NGshingensen_TP_V1.jpg',
             title: 'お風呂・温泉',
-            text: '',
+            text: 'お風呂・温泉',
             actions: [{
               type: 'postback',
               label: '選択',
@@ -664,29 +664,27 @@ function leisureCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
-           title: '展示',
-           text: '>生物、博物館、美術館',
-           actions: [{
-             type: 'postback',
-             label: '選択',
-             data: 'display',
-             displayText: '展示を選択しました。'
+            thumbnailImageUrl: 'https://images.unsplash.com/photo-1530263131525-1c1d26feaa60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80',
+            title: '展示',
+            text: '>生物、博物館、美術館',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'display'
            }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'http://gahag.net/img/201607/23s/gahag-0108929594-1.jpg',
             title: 'アウトドア・スポーツ',
             text: '>山、海・川、施設',
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'outdoor',
-              displayText: 'アウトドア・スポーツを選択しました。'
+              data: 'outdoor'
             }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'http://gahag.net/img/201509/18s/gahag-0005343950-1.jpg',
             title: 'アミューズメントパーク',
             text: '>テーマパーク・体験・文芸',
             actions: [{
