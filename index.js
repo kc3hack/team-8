@@ -104,8 +104,8 @@ app.post('/webhook', function (req, res, next) {
                         ? 'スイーツです。'
                         : (eventPostbackData === 'otherOtherFood' //和食とかアジア
                           ? otherOtherFoodCategory(event)
-                          : (eventPostbackData === 'meat'
-                            ? meatCategory(event)
+                          : (eventPostbackData === 'snack'
+                            ? '軽食です。'
                             : (eventPostbackData === 'fish'
                               ? fishCategory(event)
                               : (eventPostbackData === 'sushi'
@@ -560,17 +560,17 @@ function spotCategory(event) {
              data: 'sightseeing'
            }]
           }
-          // ,
-          // {
-          //   thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558__340.jpg',
-          //   title: 'レジャー',
-          //   text: '>展示、アウトドア・スポーツ、アミューズメント',
-          //   actions: [{
-          //     type: 'postback',
-          //     label: '選択',
-          //     data: 'leisure'
-          //   }]
-          // }
+          ,
+          {
+            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558__340.jpg',
+            title: 'レジャー',
+            text: '>展示、アウトドア・スポーツ、アミューズメント',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'leisure'
+            }]
+          }
           ,
           {
             thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2016/11/22/19/08/blur-1850082__340.jpg',
