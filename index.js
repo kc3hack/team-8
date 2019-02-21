@@ -1177,7 +1177,7 @@ function get(eventPostbackData,event,categoryText){
   else {
 
   }
-
+}
 
 async function reply(event, body) {
   try {
@@ -1194,4 +1194,4 @@ async function reply(event, body) {
     console.log(e);
   }
 }
-}
+
