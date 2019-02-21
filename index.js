@@ -69,53 +69,64 @@ app.post('/webhook', function (req, res, next) {
           type: 'text',
           text: eventPostbackData === 'food'
                 ? foodCategory(event)
-                :(eventPostbackData === 'spot'
-                  ? spotCategory(event)
-                  : (eventPostbackData === 'flour'
-                    ? 'たこ焼きです。'
-                    : (event.Postback.Data === 'sweet'
-                      ? 'スイーツです。'
-                      : (event.Postback.Data === 'other'
-                        ? otherFoodCategory(event)
-                        : (event.Postback.Data === 'sightseeing'
-                          ? sightseeingCategory(event)
-                          : (event.Postback.Data === 'leisure'
-                            ? leisureCategory(event)
-                            : (event.Postback.Data === 'shopping'
-                              ? 'ショッピングです。'
-                              : (event.Postback.Data === 'history'
-                                ? historyCategory(event)
-                                : (event.Postback.Data === 'walk'
-                                  ? walkCategory(event)
-                                  : (event.Postback.Data === 'display'
-                                    ? displayCategory(event)
-                                    : (event.Postback.Data === 'outdoor'
-                                      ? outdoorCategory(event)
-                                      : (event.Postback.Data === 'amusement'
-                                        ? amusementCategory(event)
-                                        : (event.Postback.Data === 'view'
-                                          ? viewCategory(event)
-                                          : (event.Postback.Data === 'area'
-                                            ? areaCategory(event)
-                                            : (event.Postback.Data === 'animal'
-                                              ? animalCategory(event)
-                                              : mountainCategory(event)
-                                                )
-                                              )
-                                            )
-                                          )
-                                        )
-                                      )
-                                    )
-                                  )
-                                )
-                              )
-                            )
+                // :(eventPostbackData === 'spot'
+                //   ? spotCategory(event)
+                  :(eventPostbackData === 'otherFood'
+                    ? otherFoodCategory(event)
+                    : (eventPostbackData === 'flour'
+                      ? 'たこ焼きです。'
+                      : (eventPostbackData === 'sweet'
+                        ? 'スイーツです。'
+                        : (eventPostbackData === 'otherFood'
+                          ? otherFoodCategory(event)
+                          : (eventPostbackData === 'meat'
+                            ? meatCategory(event)
+                            : '選択しました。'
+                            // : (eventPostbackData === '')
+                            // : (eventPostbackData === 'sightseeing'
+                            //   ? sightseeingCategory(event)
+                            //   : (eventPostbackData === 'leisure'
+                            //     ? leisureCategory(event)
+                            //     : (eventPostbackData === 'shopping'
+                            //       ? 'ショッピングです。'
+                            //       : (eventPostbackData === 'history'
+                            //         ? historyCategory(event)
+                            //         : (eventPostbackData === 'walk'
+                            //           ? walkCategory(event)
+                            //           : (eventPostbackData === 'display'
+                            //             ? displayCategory(event)
+                            //             : (eventPostbackData === 'outdoor'
+                            //               ? outdoorCategory(event)
+                            //               : (eventPostbackData === 'amusement'
+                            //                 ? amusementCategory(event)
+                            //                 : (eventPostbackData === 'view'
+                            //                   ? viewCategory(event)
+                            //                   : (eventPostbackData === 'area'
+                            //                     ? areaCategory(event)
+                            //                     : (eventPostbackData === 'animal'
+                            //                       ? animalCategory(event)
+                            //                       : (eventPostbackData === 'mountain'
+                            //                         ? mountainCategory(event)
+                                                    // : '選択しました。'
+                            //                         )
+                            //                       )
+                            //                     )
+                            //                   )
+                            //                 )
+                            //               )
+                            //             )
+                                      // )
+                                    // )
+                                  // )
+                            //     )
+                            //   )
+                            // )
+                            )  
                           )
                         )
-                      )  
+                      )
                     )
-
+                    
         }]
       })
 
@@ -317,7 +328,7 @@ function foodCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: '',
+           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/9d/9d70d762fd1e29e3dc3a84b0469969bf_t.jpeg',
            title: '粉物',
            text: '>お好み焼き、たこ焼き...etc',
            actions: [{
@@ -327,7 +338,7 @@ function foodCategory(event) {
            }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550701408/lightFood.jpg',
             title: '軽食',
             text: '軽食',
             actions: [{
@@ -337,9 +348,9 @@ function foodCategory(event) {
             }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550701359/sweets.jpg',
             title: 'スイーツ',
-            text: '?',
+            text: 'ケーキ、和菓子...etc',
             actions: [{
               type: 'postback',
               label: '選択',
@@ -347,13 +358,109 @@ function foodCategory(event) {
             }]
           },
           {
-            thumbnailImageUrl: '',
+            thumbnailImageUrl: 'https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png',
             title: 'その他',
             text: '>肉、魚、麺類、その他',
             actions: [{
               type: 'postback',
               label: '選択',
               data: 'otherFood'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+function otherFoodCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: 'http://earth.publicdomainq.net/201705/19o/publicdomainq-0009201gwxpbl.jpg',
+           title: '肉',
+           text: '>ハンバーグ・ステーキ,焼肉,しゃぶしゃぶ・すき焼き',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'meat'
+           }]
+          },
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201601/12s/gahag-004510.jpg',
+            title: '魚',
+            text: '>寿司、海鮮',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sushi'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'https://publicdomainq.net/images/201810/07s/publicdomainq-0027082.jpg',
+            title: '麺類',
+            text: '>うどん・そば、ラーメン',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'noodle'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201510/20s/gahag-001663.jpg',
+            title: 'その他',
+            text: '>和食、アジア、ヨーロッパ、その他',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'otherOtherFood'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+function meatCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201512/25s/gahag-003990.jpg',
+            title: 'ハンバーグ・ステーキ',
+            text: 'ハンバーグ・ステーキ',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'steak'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'https://res.cloudinary.com/tsundoku/image/upload/v1550701359/sweets.jpg',
+            title: '焼肉',
+            text: '焼肉',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'grilledMeat'
+            }]
+          },
+          {
+            thumbnailImageUrl: 'http://gahag.net/img/201510/24s/gahag-001783.jpg',
+            title: 'しゃぶしゃぶ・すき焼き',
+            text: 'しゃぶしゃぶ・すき焼き',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'sukiyaki'
             }]
           }
         ]
@@ -393,7 +500,7 @@ function spotCategory(event) {
           {
             thumbnailImageUrl: '',
             title: 'ショッピング',
-            text: '?',
+            text: 'ショッピング',
             actions: [{
               type: 'postback',
               label: '選択',
