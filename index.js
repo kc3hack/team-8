@@ -1117,7 +1117,7 @@ function mountainCategory(event) {
 
 function get(eventPostbackData,event){
   categoryText = categoryText + '/'+ eventPostbackData;
-  if (categoryText === 'food') {
+  if (eventPostbackData === 'food') {
     foodCategory(event);
   } 
   else {
