@@ -37,6 +37,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+const getCollectionList = { pages: "finalTmpPages", paths: "finalTmpPaths" };
 
 async function getMatchDocuments(matchTxt) {
   let placeCardId = []
@@ -1121,12 +1122,12 @@ function get(eventPostbackData,event,categoryText){
   
   if (eventPostbackData === 'food') {
     foodCategory(event);
-  } 
-  else {
+  }
+  else if (eventPostbackData === 'flour') {
     (async () => {
       let placeCard = await getMatchDocuments("food/flour");
       console.log(placeCard)
-
+    })
       // reply(event, {
       //   messages: [{
       //     type: 'template',
@@ -1149,7 +1150,7 @@ function get(eventPostbackData,event,categoryText){
       //     }
       //   }]
       // }) 
-    })();
+  // })();
     // reply(event, {
     //   messages: [{
     //     type: 'template',
@@ -1173,7 +1174,10 @@ function get(eventPostbackData,event,categoryText){
     //   }]
     // }) 
   }
-}
+  else {
+    
+  }
+
 
 async function reply(event, body) {
   try {
