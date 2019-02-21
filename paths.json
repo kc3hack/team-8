@@ -14,7 +14,7 @@
       {
         "tag": "lightFood",
         "title": "軽食",
-        "text": "",
+        "text": "軽食",
         "image": "https://res.cloudinary.com/tsundoku/image/upload/v1550701408/lightFood.jpg"
       },
       {
@@ -38,13 +38,13 @@
               {
                 "tag": "steak",
                 "title": "ハンバーグ・ステーキ",
-                "text": "",
+                "text": "ハンバーグ・ステーキ",
                 "image": "http://gahag.net/img/201512/25s/gahag-003990.jpg"
               },
               {
                 "tag": "grilledMeat",
                 "title": "焼肉",
-                "text": "",
+                "text": "焼肉",
                 "image": "http://gahag.net/img/201604/12s/gahag-007541.jpg"
               },
               {
@@ -84,20 +84,14 @@
               {
                 "tag": "udon",
                 "title": "うどん・そば",
-                "text": "http://gahag.net/img/201510/11s/gahag-001314.jpg",
-                "image": ""
+                "text": "",
+                "image": "http://gahag.net/img/201510/11s/gahag-001314.jpg"
               },
               {
                 "tag": "ramen",
                 "title": "ラーメン",
                 "text": "",
                 "image": "http://gahag.net/img/201602/27s/gahag-006077.jpg"
-              },
-              {
-                "tag": "pasta",
-                "title": "スパゲッティ",
-                "text": "",
-                "image": "http://gahag.net/img/201509/21s/gahag-000612.jpg"
               }
             ]
           },
@@ -142,7 +136,7 @@
               {
                 "tag": "europe",
                 "title": "ヨーロッパ",
-                "text": "",
+                "text": ">フレンチ、イタリアン、その他洋食",
                 "image": "",
                 "child": [
                   {
