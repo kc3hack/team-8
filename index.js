@@ -552,7 +552,7 @@ function spotCategory(event) {
         type: 'carousel',
         columns: [
           {
-           thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/syunsetuFTHG8406_TP_V1.jpg',
+           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/df/df0c811bf420a91952f407b0568ac390_t.jpeg',
            title: '観光',
            text: '>歴史・文化、散策、お風呂・温泉',
            actions: [{
