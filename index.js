@@ -1146,6 +1146,8 @@ function get(eventPostbackData,event,categoryText){
   else {
     (async () => {
       let placeCard = await getMatchDocuments(categoryText);
+      console.log(placeCard)
+
       reply(event, {
         messages: [{
           type: 'template',
@@ -1168,7 +1170,6 @@ function get(eventPostbackData,event,categoryText){
           }
         }]
       }) 
-      console.log(placeCard)
     })();
     // reply(event, {
     //   messages: [{
