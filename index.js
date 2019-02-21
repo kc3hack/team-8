@@ -135,6 +135,7 @@ app.post('/webhook', function (req, res, next) {
                     )
                   )
                 )
+              )
 
         }]
       })
@@ -738,7 +739,7 @@ function historyCategory(event) {
             }]
           },
           {
-            'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V.jpg',
+            thumbnailImageUrl: 'https://www.pakutaso.com/shared/img/thumb/NOU92_kyounomachiwonagameru_TP_V.jpg',
             title: 'その他',
             text: '歴史的建造物',
             actions: [{
