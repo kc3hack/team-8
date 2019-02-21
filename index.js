@@ -64,82 +64,129 @@ app.post('/webhook', function (req, res, next) {
 
     if (event.type === 'postback') {
       const eventPostbackData = event.postback.data;
-      // reply(event, {
-      //   messages: [{
-      //     type: 'text',
-      //     text: eventPostbackData === 'food'
-      //           ? otherFoodCategory(event) 
-      //           : '食事以外を選択しました。'
-      //   }]
-      // })
-
-      let text;
-      switch (eventPostbackData) {
-        case 'food':
-          text = foodCategory(event);
-          break;
-        case 'spot':
-          text = spotCategory(event);
-          break;
-        case 'flour':
-          text = 'たこ焼きです。';
-          break;
-        case 'snack':
-          text = '軽食です。';
-          break;
-        case 'sweet':
-          text = 'スイーツです。';
-          break;
-        case 'other':
-          text = otherFoodCategory(event);
-          break;
-        case 'sightseeing':
-          text = sightseeingCategory(event);
-          break;
-        case 'leisure':
-          text = leisureCategory(event);
-          break;
-        case 'shopping':
-          text = 'ショッピングです。'
-          break;
-        case 'history':
-          text = historyCategory(event);
-          break;
-        case 'walk':
-          text = walkCategory(event);
-          break;
-        case 'display':
-          text = displayCategory(event);
-          break;
-        case 'outdoor':
-          text = outdoorCategory(event);
-          break;
-        case 'amusement':
-          text = amusementCategory(event);
-          break;
-        case 'view':
-          text = viewCategory(event);
-          break;
-        case 'area':
-          text = areaCategory(event);
-          break;
-        case 'animal':
-          text = animalCategory(event);
-          break;
-        case 'mountain':
-          text = mountainCategory(event);
-          break;
-        default:
-          console.error(`不正な postback です: ${eventPostbackData}`);
-          return;
-      }
-
       reply(event, {
         messages: [{
           type: 'text',
-          text: text
+          text: eventPostbackData === 'food'
+                ? foodCategory(event)
+                :(eventPostbackData === 'spot'
+                  ? spotCategory(event)
+                  : (eventPostbackData === 'flour'
+                    ? 'たこ焼きです。'
+                    : (event.Postback.Data === 'sweet'
+                      ? 'スイーツです。'
+                      : (event.Postback.Data === 'other'
+                        ? otherFoodCategory(event)
+                        : (event.Postback.Data === 'sightseeing'
+                          ? sightseeingCategory(event)
+                          : (event.Postback.Data === 'leisure'
+                            ? leisureCategory(event)
+                            : (event.Postback.Data === 'shopping'
+                              ? 'ショッピングです。'
+                              : (event.Postback.Data === 'history'
+                                ? historyCategory(event)
+                                : (event.Postback.Data === 'walk'
+                                  ? walkCategory(event)
+                                  : (event.Postback.Data === 'display'
+                                    ? displayCategory(event)
+                                    : (event.Postback.Data === 'outdoor'
+                                      ? outdoorCategory(event)
+                                      : (event.Postback.Data === 'amusement'
+                                        ? amusementCategory(event)
+                                        : (event.Postback.Data === 'view'
+                                          ? viewCategory(event)
+                                          : (event.Postback.Data === 'area'
+                                            ? areaCategory(event)
+                                            : (event.Postback.Data === 'animal'
+                                              ? animalCategory(event)
+                                              : mountainCategory(event)
+                                                )
+                                              )
+                                            )
+                                          )
+                                        )
+                                      )
+                                    )
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )  
+                    )
+
         }]
       })
+
+      // let text;
+      // switch (eventPostbackData) {
+      //   case 'food':
+      //     text = foodCategory(event);
+      //     break;
+      //   case 'spot':
+      //     text = spotCategory(event);
+      //     break;
+      //   case 'flour':
+      //     text = 'たこ焼きです。';
+      //     break;
+      //   case 'snack':
+      //     text = '軽食です。';
+      //     break;
+      //   case 'sweet':
+      //     text = 'スイーツです。';
+      //     break;
+      //   case 'other':
+      //     text = otherFoodCategory(event);
+      //     break;
+      //   case 'sightseeing':
+      //     text = sightseeingCategory(event);
+      //     break;
+      //   case 'leisure':
+      //     text = leisureCategory(event);
+      //     break;
+      //   case 'shopping':
+      //     text = 'ショッピングです。'
+      //     break;
+      //   case 'history':
+      //     text = historyCategory(event);
+      //     break;
+      //   case 'walk':
+      //     text = walkCategory(event);
+      //     break;
+      //   case 'display':
+      //     text = displayCategory(event);
+      //     break;
+      //   case 'outdoor':
+      //     text = outdoorCategory(event);
+      //     break;
+      //   case 'amusement':
+      //     text = amusementCategory(event);
+      //     break;
+      //   case 'view':
+      //     text = viewCategory(event);
+      //     break;
+      //   case 'area':
+      //     text = areaCategory(event);
+      //     break;
+      //   case 'animal':
+      //     text = animalCategory(event);
+      //     break;
+      //   case 'mountain':
+      //     text = mountainCategory(event);
+      //     break;
+      //   default:
+      //     console.error(`不正な postback です: ${eventPostbackData}`);
+      //     return;
+      // }
+
+      // reply(event, {
+      //   messages: [{
+      //     type: 'text',
+      //     text: text
+      //   }]
+      // })
+
       // for (let i = 0; i < paths.length; i ++) {
       //   const result = seek(paths[i], eventPostbackData);
       //   if (result !== null) {
