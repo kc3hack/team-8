@@ -370,7 +370,7 @@ function foodCategory(event) {
             }]
           },
           {
-            thumbnailImageUrl: 'https://4.bp.blogspot.com/-7Yn9HIjxaVk/W5H_yHMZ9rI/AAAAAAABOvo/swKb6GUVdg89VKZuePfiUAQa9crZyta0QCLcBGAs/s180-c/food_moritsuke_good.png',
+            thumbnailImageUrl: 'http://gahag.net/img/201608/17s/gahag-011689.jpg',
             title: 'その他',
             text: '>肉、魚、麺類、その他',
             actions: [{
@@ -384,7 +384,7 @@ function foodCategory(event) {
     }]
   })
 }
-function otherFoodCategory(event) {
+function otherFoodCategory(event) { //反応しない
   reply(event, {
     messages: [{
       type: 'template',
@@ -532,7 +532,7 @@ function spotCategory(event) {
            }]
           },
           {
-            thumbnailImageUrl: 'https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558__340.jpg',
+            thumbnailImageUrl: 'http://gahag.net/img/201605/15s/gahag-008615.jpg',
             title: 'レジャー',
             text: '>展示、アウトドア・スポーツ、アミューズメント',
             actions: [{
@@ -655,7 +655,7 @@ function sightseeingCategory(event) {
     }]
   })
 }
-function leisureCategory(event) {
+function leisureCategory(event) {  //反応しない
   reply(event, {
     messages: [{
       type: 'template',
@@ -690,8 +690,7 @@ function leisureCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'amusement',
-              displayText: 'アミューズメントパークを選択しました。'
+              data: 'amusement'
             }]
           }
         ]
@@ -714,8 +713,7 @@ function historyCategory(event) {
            actions: [{
              type: 'postback',
              label: '選択',
-             data: 'castle',
-             displayText: 'お城を選択しました。'
+             data: 'castle'
            }]
           },
           {
@@ -725,8 +723,7 @@ function historyCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'shrine',
-              displayText: '神社・寺を選択しました。'
+              data: 'shrine'
             }]
           },
           {
@@ -736,8 +733,7 @@ function historyCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'remain',
-              displayText: '遺跡・史跡を選択しました。'
+              data: 'remain'
             }]
           },
           {
@@ -747,8 +743,7 @@ function historyCategory(event) {
             actions: [{
               type: 'postback',
               label: '選択',
-              data: 'odaNobunaga',
-              displayText: 'その他を選択しました。'
+              data: 'odaNobunaga'
             }]
           }
         ]
