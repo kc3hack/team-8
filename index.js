@@ -65,17 +65,26 @@ app.post('/webhook', function (req, res, next) {
     if (event.type === 'postback') {
       const eventPostbackData = event.postback.data;
 
-      for (let i = 0; i < paths.length; i ++) {
-        const result = seek(paths[i], eventPostbackData);
-        if (result !== null) {
-          generateTemplate(event, result);
-          return;
-        }
-        if (i === paths.length - 1) {
-          console.error('不正な postback です');
-          return;
-        }
-      }
+      reply(event, {
+        messages: [{
+          type: 'text',
+          text: eventPostbackData === 'food'
+                ? otherFoodCategory(event) 
+                : '観光です。'
+
+        }]
+      })
+      // for (let i = 0; i < paths.length; i ++) {
+      //   const result = seek(paths[i], eventPostbackData);
+      //   if (result !== null) {
+      //     generateTemplate(event, result);
+      //     return;
+      //   }
+      //   if (i === paths.length - 1) {
+      //     console.error('不正な postback です');
+      //     return;
+      //   }
+      // }
     }
   }
 });
@@ -121,37 +130,37 @@ console.log(JSON.stringify([
 ]));
 */
 
-function generateTemplate(event, obj) {
-  if ('child' in obj) {
-    // 質問する
-    const request = {
-      messages: [{
-        type: 'template',
-        altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
-        template: {
-          type: 'carousel',
-          columns: obj.child.map(item => {
-            console.log(item);
-            return {
-              thumbnailImageUrl: item.image,
-              title: item.title,
-              text: item.text,
-              actions: [{
-                type: 'postback',
-                label: '選択',
-                data: item.tag
-              }]
-            };
-          })
-        }
-      }]
-    };
-    reply(event, request);
-    return;
-  }
+// function generateTemplate(event, obj) {
+//   if ('child' in obj) {
+//     // 質問する
+//     const request = {
+//       messages: [{
+//         type: 'template',
+//         altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+//         template: {
+//           type: 'carousel',
+//           columns: obj.child.map(item => {
+//             console.log(item);
+//             return {
+//               thumbnailImageUrl: item.image,
+//               title: item.title,
+//               text: item.text,
+//               actions: [{
+//                 type: 'postback',
+//                 label: '選択',
+//                 data: item.tag
+//               }]
+//             };
+//           })
+//         }
+//       }]
+//     };
+//     reply(event, request);
+//     return;
+//   }
 
-  // 検索結果を発言する
-}
+//   // 検索結果を発言する
+// }
 
 function category(event) {
   reply(event, {
@@ -186,6 +195,42 @@ function category(event) {
     }]
   })
 }
+function otherFoodCategory(event) {
+  reply(event, {
+    messages: [{
+      type: 'template',
+      altText: 'これはテンプレートメッセージです。このバージョンでは対応していません。',
+      template: {
+        type: 'carousel',
+        columns: [
+          {
+           thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+           title: '和食',
+           text: '和食',
+           actions: [{
+             type: 'postback',
+             label: '選択',
+             data: 'wasyoku',
+             displayText: '和食を選択しました。'
+           }]
+          },
+          {
+            thumbnailImageUrl: 'https://d1f5hsy4d47upe.cloudfront.net/38/38c80c991b9ae168c19f9782b48a07b0_t.jpeg',
+            title: '中華',
+            text: '中華',
+            actions: [{
+              type: 'postback',
+              label: '選択',
+              data: 'tyuka',
+              displayText: '中華を選択しました。'
+            }]
+          }
+        ]
+      }
+    }]
+  })
+}
+
 
 async function reply(event, body) {
   try {
